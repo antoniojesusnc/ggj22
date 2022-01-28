@@ -5,4 +5,5 @@ public class TracksConfig : ScriptableObject
 {
     public float minObstacleDistance;
     public float deltaHandicap;
+    public float size;
 }

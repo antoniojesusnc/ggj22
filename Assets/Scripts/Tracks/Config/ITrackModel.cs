@@ -6,4 +6,5 @@ public interface ITrackModel
 {
     List<int> Tracks01 { get;  }
     List<int> Tracks02 { get;  }
+    TracksConfig Config { get; }
 }
