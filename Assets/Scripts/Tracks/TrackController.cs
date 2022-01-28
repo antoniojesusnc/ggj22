@@ -9,8 +9,13 @@ public class TrackController : MonoBehaviour
 
     public const int TrackAmount = 2;
     
+    // size times that the element should live
+    private const int HOW_FAR_BEFORE_BE_DELETED = 2;
+    
+    // TODO Delete the serialize field
     [Header("Track Configs")]
     [SerializeField]
+    [Tooltip("Do not user this by editor")]
     private TracksConfig _tracksConfig;
     
     [SerializeField]
@@ -24,21 +29,37 @@ public class TrackController : MonoBehaviour
     private List<Transform> _floorPosition;
 
     private ITrackModel _trackModel;
+    private Vector3 _initialPosition;
 
     public Dictionary<int, TrackFloor> _trackFloors = new Dictionary<int, TrackFloor>();
 
-    private void Awake()
+    public void Init(TracksConfig tracksConfig, Vector3 initialPosition)
     {
-        //ClockService.Instance.UpdateEvent += CustomUpdate();
+        _initialPosition = initialPosition;
+        _tracksConfig = tracksConfig;
+        
+        ClockService.Instance.UpdateEvent += CustomUpdate;
+
+        GenerateTrack();
+    }
+    
+    public void Destroy()
+    {
+        ClockService.Instance.UpdateEvent -= CustomUpdate;
+        Destroy(gameObject);
     }
 
-    [ContextMenu("GenerateFloor")]
+    private void CustomUpdate(float deltaTime)
+    {
+        transform.Translate(Vector3.left * deltaTime * GameService.Instance.Speed);
+    }
+    
     private void GenerateFloorDebug()
     {
         GenerateTrack();
     }
     
-    public void GenerateTrack()
+    private void GenerateTrack()
     {
         var newTrack = GetTracks();
         _trackModel = newTrack;
@@ -53,11 +74,21 @@ public class TrackController : MonoBehaviour
         floor.SetData(trackId, _trackModel);
     }
 
-    public ITrackModel GetTracks()
+    private ITrackModel GetTracks()
     {
         return new TrackModelMock(_tracksConfig, _handicap);
     }
 
+    public Vector3 GetFinalPosition()
+    {
+        return transform.position + Vector3.right * _tracksConfig.size;
+    }
+    
+    public bool ShouldBeDeleted()
+    {
+        return transform.position.x < -_tracksConfig.size * HOW_FAR_BEFORE_BE_DELETED;
+    }
+    
     [ContextMenu("Test")]
     private void Test()
     {
@@ -77,5 +108,6 @@ public class TrackController : MonoBehaviour
         }
         Debug.Log(track);
     }
+
     
 }

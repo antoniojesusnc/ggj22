@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class MonoBehaviorSingleton<T> : MonoBehaviour
 {
-    public static T Instance;
-    
-    public T _instance;
-    
+    public static T Instance { get; private set; }
+
     protected virtual void Awake()
     {
         if (Instance != null)
@@ -13,6 +11,6 @@ public class MonoBehaviorSingleton<T> : MonoBehaviour
             Destroy(gameObject);
         }
         
-        _instance = this.GetComponent<T>();
+        Instance = this.GetComponent<T>();
     }
 }

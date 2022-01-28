@@ -1,13 +1,14 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class ClockService : MonoBehaviorSingleton<ClockService>
 {
-    public event Action<float> UpdateEvent;
-    public event Action<float> UpdateNonPausableEvent;
+    public delegate void CustomUpdateDelegate(float deltaTime);
+    public event CustomUpdateDelegate UpdateEvent;
+    public event CustomUpdateDelegate UpdateNonPausableEvent;
 
-    private float _modtimeScale;
+    private float _modTimeScale = 1f;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -17,15 +18,18 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
 
     private IEnumerator CustomUpdateCo()
     {
-        yield return 0;
-        UpdateEvent?.Invoke(Time.deltaTime*_modtimeScale);
-        UpdateNonPausableEvent?.Invoke(Time.deltaTime);
+        while (true)
+        {
+            UpdateEvent?.Invoke(Time.deltaTime*_modTimeScale);
+            UpdateNonPausableEvent?.Invoke(Time.deltaTime);
+            yield return 0;
+        }
     }
 
     public void SetDefaultTimeScale() => SetTimeScale(1); 
     
     public void SetTimeScale(float newTimeScale)
     {
-        _modtimeScale = newTimeScale;
+        _modTimeScale = newTimeScale;
     }
 }
