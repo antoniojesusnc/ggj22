@@ -1,24 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4362906461251248338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../FMod/Novo Bank/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637790749584183987
-  FileSizes: []
-  Exists: 1
---- !u!114 &-1442404539925852990
+--- !u!114 &-6084816681564349209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,13 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: ../FMod/Novo Bank/Master.strings.bank
+  Path: Assets/Sounds/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637790751536449362
+  lastModified: 637790942736963283
   FileSizes:
   - Name: 
     Value: 802
+  Exists: 1
+--- !u!114 &-634488350257813411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Sounds/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637790942736828270
+  FileSizes: []
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -51,16 +51,16 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -1442404539925852990}
-  - {fileID: -4362906461251248338}
+  - {fileID: -6084816681564349209}
+  - {fileID: -634488350257813411}
   EditorEvents:
   - {fileID: 8142856232175480316}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -4362906461251248338}
+  - {fileID: -634488350257813411}
   StringsBanks:
-  - {fileID: -1442404539925852990}
-  cacheTime: 637790751536449362
+  - {fileID: -6084816681564349209}
+  cacheTime: 637790942736963283
   cacheVersion: 10
 --- !u!114 &8105491875275356467
 MonoBehaviour:
@@ -105,8 +105,7 @@ MonoBehaviour:
     Data3: 946045873
     Data4: -516876446
   Banks:
-  - {fileID: -4362906461251248338}
-  - {fileID: -1442404539925852990}
+  - {fileID: -634488350257813411}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
