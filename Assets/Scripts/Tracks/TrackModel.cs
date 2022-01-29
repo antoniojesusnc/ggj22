@@ -14,34 +14,39 @@ public class TrackModel : ITrackModel
         Tracks01 = new List<int>();
         Tracks02 = new List<int>();
 
-        List<int> tracks = generateTrack(Config.size, Config.segments);
+        List<int> tracks = generateTrack(Config.size, Config.segments, Config.maxBlockPerSegment);
 
+        float factorToPutDown = 0.5f;
+        
         foreach (var item in tracks)
         {
-            if (Random.Range(0, 2) == 0)
+            if (Random.value >= factorToPutDown)
             {
                 Tracks01.Add(item);
+                factorToPutDown = 0.7f;
             }
             else
             {
                 Tracks02.Add(item);
+                factorToPutDown = 0.3f;
             }
         }
     }
 
 
-    private List<int> generateTrack(int trackSize, int segments)
+    private List<int> generateTrack(int trackSize, int segments, int maxBlockPerSegment)
     {
         int segmentSize = trackSize / segments;
-        Debug.Log("segmentSize: " + segmentSize);
+        // Debug.Log("segmentSize: " + segmentSize);
 
-        int maxBlockPerSegment = 20;
+        // int maxBlockPerSegment = 10; // 20 * handicap
         List<int> track = new List<int>();
 
         for (int i = 0; i < segments; i++)
         {
-            int initValue = (i * segmentSize) + 1;
-            track.AddRange(generateTrackSegment(maxBlockPerSegment, segmentSize, initValue));
+            int minValue = (i * segmentSize) + 1;
+            int maxValue = minValue + segmentSize - 1;
+            addTrackSegment(track, maxBlockPerSegment, minValue, maxValue);
         }
 
         track.Sort();
@@ -49,19 +54,20 @@ public class TrackModel : ITrackModel
         return track;
     }
 
-    private List<int> generateTrackSegment(int maxBlockPerSegment, int segmentSize, int initValue)
+    private List<int> addTrackSegment(List<int> track, int maxBlockPerSegment, int minValue, int maxValue)
     {
-        List<int> segmentTrack = new List<int>();
 
         for (int i = 0; i < maxBlockPerSegment; i++)
         {
-            int randPosition = Random.Range(initValue, segmentSize);
-            if (!segmentTrack.Contains(randPosition))
+            int randPosition = Random.Range(minValue, maxValue);
+            int rangeMin = randPosition - Config.minObstacleDistance;
+            int rangeMax = randPosition + Config.minObstacleDistance;
+            if (!track.Exists(block => block >= rangeMin && block <= rangeMax))
             {
-                segmentTrack.Add(randPosition);
+                track.Add(randPosition);
             }
         }
 
-        return segmentTrack;
+        return track;
     }
 }

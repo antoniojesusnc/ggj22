@@ -6,6 +6,7 @@ public class TracksConfig : ScriptableObject
 {
     public int minObstacleDistance;
     public float deltaHandicap;
+    public int maxBlockPerSegment;
     public int segments;
     public int size;
 

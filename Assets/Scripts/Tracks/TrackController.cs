@@ -73,6 +73,8 @@ public class TrackController : MonoBehaviour
     {
         var newTrack = GetTracks();
         _trackModel = newTrack;
+
+        logTracks(newTrack);
         
         GenerateFloor(Track01);
         GenerateFloor(Track02);
@@ -99,10 +101,8 @@ public class TrackController : MonoBehaviour
         return transform.position.x < -_tracksConfig.size * HOW_FAR_BEFORE_BE_DELETED;
     }
     
-    [ContextMenu("Test")]
-    private void Test()
+    private void logTracks(ITrackModel trackModel)
     {
-        var trackModel = new TrackModel(_tracksConfig, _handicap);
 
         string track = "Track01: ";
         for (int i = 0; i < trackModel.Tracks01.Count; i++)
@@ -114,7 +114,7 @@ public class TrackController : MonoBehaviour
         track = "Track02: ";
         for (int i = 0; i < trackModel.Tracks02.Count; i++)
         {
-            track += $"{trackModel.Tracks01[i]}, ";
+            track += $"{trackModel.Tracks02[i]}, ";
         }
         Debug.Log(track);
     }
