@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class RunnerController : MonoBehaviorSingleton<RunnerController>
 {
+    [SerializeField] private RunnerGraphic _runner01;
+    [SerializeField] private RunnerGraphic _runner02;
+    
     [SerializeField] private float _currentLives;
 
     [SerializeField] private RunnerConfig _runnerConfig;
@@ -41,11 +44,28 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
 
     private void ChangeTrack()
     {
-        CurrentTrack = CurrentTrack == TrackController.Track01
+        CurrentTrack = SwitchTrack(CurrentTrack);
+
+        SwitchPositions();
+        
+        OnTrackChanged?.Invoke();
+    }
+
+    private void SwitchPositions()
+    {
+        _runner01.SetTrackId(SwitchTrack(_runner01.TrackId));
+        _runner02.SetTrackId(SwitchTrack(_runner02.TrackId));
+
+        var transform1 = _runner01.transform;
+        var transform2 = _runner02.transform;
+        (transform1.position, transform2.position) = (transform2.position, transform1.position);
+    }
+
+    private int SwitchTrack(int track)
+    {
+        return track == TrackController.Track01
             ? TrackController.Track02
             : TrackController.Track01;
-
-        OnTrackChanged?.Invoke();
     }
 
     public void OnHitWithObstacle()

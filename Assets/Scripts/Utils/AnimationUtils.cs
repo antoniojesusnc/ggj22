@@ -10,6 +10,8 @@ public class AnimationUtils
         RUN_SLOW_BLACK = 4,
         RUN_NORMAL_BLACK = 5,
         RUN_FAST_BLACK = 6,
-        HIT_BLACK = 7
+        HIT_BLACK = 7,
+        INIT = 8,
+        INIT_BLACK = 9,
     }
 }

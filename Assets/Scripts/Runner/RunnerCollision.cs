@@ -12,17 +12,7 @@ public class RunnerCollision : RunnerSwitcher
     
     [SerializeField] 
     private Rigidbody2D _rigidbody;
-
-    protected override void SetAsAvailable()
-    {
-        gameObject.SetActive(true);
-    }
-
-    protected override void SetAsUnAvailable()
-    {
-        gameObject.SetActive(false);
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if ((1 << collider.gameObject.layer) != _layerTohit)
