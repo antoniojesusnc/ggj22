@@ -75,8 +75,6 @@ public class TrackController : MonoBehaviour
     {
         var newTrack = GetTracks();
         _trackModel = newTrack;
-
-        logTracks(newTrack);
         
         GenerateFloor(Track01);
         GenerateFloor(Track02);
@@ -112,53 +110,4 @@ public class TrackController : MonoBehaviour
         }
     }
 
-    private void logTracks(ITrackModel trackModel)
-    {
-
-        string track = "Track01: ";
-        for (int i = 0; i < trackModel.Tracks01.Count; i++)
-        {
-            track += $"{trackModel.Tracks01[i]}, ";
-        }
-
-        Debug.Log(track);
-
-        track = "Track02: ";
-        for (int i = 0; i < trackModel.Tracks02.Count; i++)
-        {
-            track += $"{trackModel.Tracks02[i]}, ";
-        }
-        Debug.Log(track);
-    }
-
-    [ContextMenu("TestAAMV")]
-    private void TestAAMV()
-    {
-        TracksConfig configMock = new TracksConfig();
-        configMock.minObstacleDistance = 3;
-        configMock.size = 100;
-        configMock.segments = 2;
-
-        float handicapMock = 0.1F;
-
-
-        var trackModel = new TrackModel(configMock, handicapMock);
-
-        Debug.Log(_tracksConfig);
-
-        string track = "Track01: ";
-        for (int i = 0; i < trackModel.Tracks01.Count; i++)
-        {
-            track += $"{trackModel.Tracks01[i]}, ";
-        }
-
-        Debug.Log(track);
-        
-        track = "Track02: ";
-        for (int i = 0; i < trackModel.Tracks02.Count; i++)
-        {
-            track += $"{trackModel.Tracks02[i]}, ";
-        }
-        Debug.Log(track);
-    }
 }
