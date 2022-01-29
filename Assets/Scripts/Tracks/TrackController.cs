@@ -86,7 +86,7 @@ public class TrackController : MonoBehaviour
 
     private ITrackModel GetTracks()
     {
-        return new TrackModelMock(_tracksConfig, _handicap);
+        return new TrackModel(_tracksConfig, _handicap);
     }
 
     public Vector3 GetFinalPosition()
@@ -115,6 +115,39 @@ public class TrackController : MonoBehaviour
         for (int i = 0; i < trackModel.Tracks02.Count; i++)
         {
             track += $"{trackModel.Tracks01[i]}, ";
+        }
+        Debug.Log(track);
+    }
+
+    [ContextMenu("TestAAMV")]
+    private void TestAAMV()
+    {
+        TracksConfig configMock = new TracksConfig();
+        configMock.minObstacleDistance = 3;
+        configMock.size = 100;
+        configMock.segments = 2;
+
+        float handicapMock = 0.1F;
+
+
+        var trackModel = new TrackModel(configMock, handicapMock);
+
+        Debug.Log(_tracksConfig);
+
+        Debug.Log(_handicap);
+
+
+        string track = "Track01: ";
+        for (int i = 0; i < trackModel.Tracks01.Count; i++)
+        {
+            track += $"{trackModel.Tracks01[i]}, ";
+        }
+        Debug.Log(track);
+        
+        track = "Track02: ";
+        for (int i = 0; i < trackModel.Tracks02.Count; i++)
+        {
+            track += $"{trackModel.Tracks02[i]}, ";
         }
         Debug.Log(track);
     }
