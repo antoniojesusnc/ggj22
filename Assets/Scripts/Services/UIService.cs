@@ -52,10 +52,11 @@ public class UIService : MonoBehaviorSingleton<UIService>
             live.Init();
             _lives.Add(live);
         }
-        RunnerController.Instance.OnHit += OnRunnerHit;
-        OnRunnerHit();
+        RunnerController.Instance.OnHitObstacle += CheckLives;
+        RunnerController.Instance.OnHitReward += CheckLives;
+        CheckLives();
     }
-    private void OnRunnerHit()
+    private void CheckLives()
     {
         for (int i = 0; i < _runnerController.MaxLives; i++)
         {

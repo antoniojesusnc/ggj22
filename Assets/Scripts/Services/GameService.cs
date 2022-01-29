@@ -54,7 +54,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
     private void SuscribeToRunnerEvents()
     {
-        RunnerController.Instance.OnHit += OnRunnerHit;
+        RunnerController.Instance.OnHitObstacle += OnRunnerHitObstacle;
         RunnerController.Instance.OnDie += OnRunnerDie;
     }
 
@@ -63,7 +63,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
         GameOver();
     }
 
-    private void OnRunnerHit()
+    private void OnRunnerHitObstacle()
     {
         _speedController.OnHit();
         _handicapController.OnHit();

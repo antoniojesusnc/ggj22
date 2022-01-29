@@ -12,4 +12,5 @@ public class RunnerConfig : ScriptableObject
     public Color inActiveColor;
 
     [Header("Config")] public int lives;
+    public float rewardHPIncrease;
 }

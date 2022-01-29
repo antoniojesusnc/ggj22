@@ -20,7 +20,7 @@ public class TrackController : MonoBehaviour
     [Header("Track Pieces")]
     [SerializeField]
     private TrackFloor _floorPrefab;
-    
+
     [SerializeField]
     private List<Transform> _floorPosition;
 
@@ -83,7 +83,7 @@ public class TrackController : MonoBehaviour
     private void GenerateFloor(int trackId)
     {
         var floor = Instantiate(_floorPrefab, _floorPosition[trackId]);
-        floor.SetData(_tracksConfig, trackId, _trackModel);
+        floor.SetData(trackId, _trackModel);
         _trackFloors.Add(trackId, floor);
     }
 
@@ -106,7 +106,7 @@ public class TrackController : MonoBehaviour
     {
         foreach (var track in _trackFloors)
         {
-            track.Value.CleanObstacles();
+            track.Value.CleanTrack();
         }
     }
 

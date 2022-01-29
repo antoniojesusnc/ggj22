@@ -6,6 +6,10 @@ public class TrackModel : ITrackModel
 {
     public List<int> Tracks01 { get; private set; }
     public List<int> Tracks02 { get; private set; }
+    
+    public List<int> Rewards01 { get; private set; }
+    public List<int> Rewards02 { get; private set; }
+    
     public TracksConfig Config { get; private set; }
 
     public TrackModel(TracksConfig tracksConfig, float handicap)

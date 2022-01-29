@@ -4,6 +4,9 @@ using UnityEngine.Events;
 
 public class RunnerCollision : RunnerSwitcher
 {
+    [SerializeField]
+    private LayerMask _layerTohit;
+    
     [SerializeField] 
     private UnityEvent OnHitObstacule;
     
@@ -22,7 +25,7 @@ public class RunnerCollision : RunnerSwitcher
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer != LayerMask.NameToLayer(LayerConstant.LayerObstacle))
+        if (collider.gameObject.layer != _layerTohit)
         {
             return;
         }
