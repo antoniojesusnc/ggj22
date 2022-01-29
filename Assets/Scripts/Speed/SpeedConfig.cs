@@ -6,7 +6,8 @@ public class SpeedConfig : ScriptableObject
     [Header("Absolute values")] 
     public float minSpeed;
     public float maxSpeed;
-    public float speedIncrementPerSeconds;
+    public float timeToReachMaxSpeed;
+    public AnimationCurve speedIncreaseCurve;
     
     [Header("After Hit")]
     public float timeToSlowAfterHit;
