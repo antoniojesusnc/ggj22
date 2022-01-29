@@ -15,4 +15,8 @@ public class TracksConfig : ScriptableObject
     [Header("After hit cleaning")]
     [Range(0,1)]
     public float deleteObstaclesIfLessThanPercentageElapsed;
+
+    [Header("Graphic Config")]
+    public Sprite[] floorGraphic;
+    public float floorSize;
 }

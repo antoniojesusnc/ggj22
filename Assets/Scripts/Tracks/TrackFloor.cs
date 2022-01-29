@@ -21,7 +21,7 @@ public class TrackFloor : MonoBehaviour
     
     public Dictionary<int, List<TrackObstacle>> _trackObstacles = new Dictionary<int, List<TrackObstacle>>();
 
-    public void SetData(int trackId, ITrackModel trackModel)
+    public void SetData(TracksConfig tracksConfig, int trackId, ITrackModel trackModel)
     {
         _trackId = trackId;
         _trackModel = trackModel;
@@ -35,8 +35,21 @@ public class TrackFloor : MonoBehaviour
 
     private void GenerateGraphic()
     {
-        _graphic.localScale = new Vector3(_trackModel.Config.size, 1, 1);
-        _graphic.transform.localPosition = Vector3.right * _graphic.localScale.x * 0.5f;
+        float numFloors = _trackModel.Config.size / _trackModel.Config.floorSize;
+        Vector3 gap = _trackId == TrackController.Track01 ? Vector3.right * 2 : Vector3.zero;
+        Vector3 acumPosition = _graphic.transform.localPosition - Vector3.right * 2 + gap;
+        for (int i = 0; i < numFloors; i++)
+        {
+            var newFloor = GameObject.Instantiate(_graphic, _graphic.parent);
+            newFloor.transform.localPosition = newFloor.transform.localPosition + acumPosition; 
+            newFloor.gameObject.GetComponent<SpriteRenderer>().sprite = _trackModel.Config.floorGraphic[_trackId];
+            
+            acumPosition += Vector3.right * _trackModel.Config.floorSize;
+        }
+        
+        Destroy(_graphic.gameObject);
+        //_graphic.localScale = new Vector3(_trackModel.Config.size, 1, 1);
+        //_graphic.transform.localPosition = Vector3.right * _graphic.localScale.x * 0.5f;
     }
 
     private void GenerateTrackPart(int trackId, List<int> tracks)

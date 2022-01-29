@@ -9,7 +9,7 @@ public class TrackController : MonoBehaviour
     public const int TrackAmount = 2;
     
     // size times that the element should live
-    private const int HOW_FAR_BEFORE_BE_DELETED = 2;
+    private const float HOW_FAR_BEFORE_BE_DELETED = 1.2f;
     
     // TODO Delete the serialize field
     [Header("Track Configs")]
@@ -83,7 +83,7 @@ public class TrackController : MonoBehaviour
     private void GenerateFloor(int trackId)
     {
         var floor = Instantiate(_floorPrefab, _floorPosition[trackId]);
-        floor.SetData(trackId, _trackModel);
+        floor.SetData(_tracksConfig, trackId, _trackModel);
         _trackFloors.Add(trackId, floor);
     }
 

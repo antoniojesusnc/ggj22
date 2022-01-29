@@ -20,6 +20,15 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
 
         StartCoroutine(CustomUpdateCo());
     }
+    
+    public override void Dispose()
+    {
+        OnUpdateEvent = null;
+        UpdateNonPausableEvent = null;
+        
+        _timers.Clear();
+    }
+    
     public void AddTimer(float duration, bool pausable, Action callback)
     {
         _timers.Add(new ClockServiceTimers(duration, callback, pausable));

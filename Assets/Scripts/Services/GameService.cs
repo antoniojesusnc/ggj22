@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameService : MonoBehaviorSingleton<GameService>
 {
@@ -87,5 +88,12 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
         State = newState;
         OnChangeState?.Invoke();
+    }
+
+    public void ReloadGame()
+    {
+        ClockService.Instance.Dispose();
+        
+        SceneManager.LoadScene(SceneUtils.GameScene);
     }
 }
