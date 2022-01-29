@@ -18,9 +18,32 @@ public class RunnerGraphic : RunnerSwitcher
 
         _currentAnimation = AnimationUtils.RunnerAnims.NONE;
         _available = _trackId == TrackController.Track01;
-        CheckAnimation();
+        SetInitAnimation();
+
+        runnerController.OnHitObstacle += OnHitWithObstacle;
         
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
+    }
+
+    private void SetInitAnimation()
+    {
+        var animation = _available
+            ? AnimationUtils.RunnerAnims.INIT
+            : AnimationUtils.RunnerAnims.INIT_BLACK;  
+        _animator.SetTrigger(animation.ToString());
+        
+        _spriteRenderer.sprite = GetSprite();
+        _currentAnimation = animation;
+    }
+
+    private void OnHitWithObstacle()
+    {
+        var animation = _available
+            ? AnimationUtils.RunnerAnims.HIT
+            : AnimationUtils.RunnerAnims.HIT_BLACK;  
+        _animator.SetTrigger(animation.ToString());
+        
+        _spriteRenderer.sprite = GetSprite();
     }
 
     private void CustomUpdate(float deltaTime)
@@ -33,14 +56,17 @@ public class RunnerGraphic : RunnerSwitcher
         CheckAnimation(
             _available
                 ? _runnerController.RunnerConfig.animationsClipsBySpeed
-                : _runnerController.RunnerConfig.animationsBlackClipsBySpeed
-            ,
-            _available
-                ? _runnerController.RunnerConfig.normalSprite
-                : _runnerController.RunnerConfig.blackSprite);
+                : _runnerController.RunnerConfig.animationsBlackClipsBySpeed);
     }
 
-    private void CheckAnimation(List<RunnerConfig.RunnerConfigAnimationInfo> animations, Sprite sprite)
+    private Sprite GetSprite()
+    {
+        return _available
+            ? _runnerController.RunnerConfig.normalSprite
+            : _runnerController.RunnerConfig.blackSprite;
+    }
+
+    private void CheckAnimation(List<RunnerConfig.RunnerConfigAnimationInfo> animations)
     {
         var animation = animations[0];
         var speed = GameService.Instance.Speed;
@@ -58,19 +84,10 @@ public class RunnerGraphic : RunnerSwitcher
 
         if (_currentAnimation != animation.animation)
         {
+            _animator.ResetTrigger(_currentAnimation.ToString());
             _animator.SetTrigger(animation.animation.ToString());
-            _spriteRenderer.sprite = sprite;
+            _spriteRenderer.sprite = GetSprite();
             _currentAnimation = animation.animation;
         }
-    }
-
-    protected override void SetAsAvailable()
-    {
-        _available = true;
-    }
-
-    protected override void SetAsUnAvailable()
-    {
-        _available = false;
     }
 }

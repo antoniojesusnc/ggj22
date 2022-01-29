@@ -4,32 +4,21 @@ public abstract class RunnerSwitcher : MonoBehaviour
 {
     [SerializeField]
     protected int _trackId;
+
+    public int TrackId => _trackId;
     
     protected RunnerController _runnerController;
     
     public virtual void Init(RunnerController runnerController)
     {
         _runnerController = runnerController;
-        
+
         transform.position = TrackManager.Instance.GetTrackPositions()[_trackId];
-
-        runnerController.OnTrackChanged += OnTrackChanged;
-        OnTrackChanged();
+        SetTrackId(_trackId);
     }
 
-    private void OnTrackChanged()
+    public void SetTrackId(int trackId)
     {
-        if (_runnerController.CurrentTrack == _trackId)
-        {
-            SetAsAvailable();
-        }
-        else
-        {
-            SetAsUnAvailable();
-        }
+        _trackId = trackId;
     }
-
-    protected abstract void SetAsAvailable();
-
-    protected abstract void SetAsUnAvailable();
 }
