@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ClockService : MonoBehaviorSingleton<ClockService>
 {
     public delegate void CustomUpdateDelegate(float deltaTime);
-    public event CustomUpdateDelegate UpdateEvent;
+    public event CustomUpdateDelegate OnUpdateEvent;
     public event CustomUpdateDelegate UpdateNonPausableEvent;
 
     private float _modTimeScale = 1f;
+
+    private List<ClockServiceTimers> _timers = new List<ClockServiceTimers>();
+    
     
     protected override void Awake()
     {
@@ -15,20 +20,46 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
 
         StartCoroutine(CustomUpdateCo());
     }
+    public void AddTimer(float duration, bool pausable, Action callback)
+    {
+        _timers.Add(new ClockServiceTimers(duration, callback, pausable));
+    }
 
     private IEnumerator CustomUpdateCo()
     {
         while (true)
         {
+            UpdateNonPausableEvent?.Invoke(Time.deltaTime);
+            CheckTimers(Time.deltaTime, false);
+            
             if (GameService.Instance.State != GameService.GameState.Playing)
             {
                 yield return 0;
                 continue;
             }
-            
-            UpdateEvent?.Invoke(Time.deltaTime*_modTimeScale);
-            UpdateNonPausableEvent?.Invoke(Time.deltaTime);
+
+            float deltaTimeScaled = Time.deltaTime * _modTimeScale;
+            OnUpdateEvent?.Invoke(deltaTimeScaled);
+            CheckTimers(deltaTimeScaled, true);
             yield return 0;
+        }
+    }
+
+    private void CheckTimers(float deltaTime, bool canBePausedTimers)
+    {
+        for (int i = _timers.Count - 1; i >= 0; i--)
+        {
+            if (_timers[i].isPausable != canBePausedTimers)
+            {
+                continue;
+            }
+            
+            _timers[i].timer -= deltaTime;
+            if (_timers[i].timer <= 0)
+            {
+                _timers[i].callback?.Invoke();
+                _timers.RemoveAt(i);
+            }
         }
     }
 
@@ -37,5 +68,19 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
     public void SetTimeScale(float newTimeScale)
     {
         _modTimeScale = newTimeScale;
+    }
+
+    private class ClockServiceTimers
+    {
+        public float timer;
+        public Action callback;
+        public bool isPausable; 
+        
+        public ClockServiceTimers(float duration, Action action, bool pausable)
+        {
+            timer = duration;
+            callback = action;
+            isPausable = pausable;
+        }
     }
 }

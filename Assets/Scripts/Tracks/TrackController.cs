@@ -37,18 +37,18 @@ public class TrackController : MonoBehaviour
         _initialPosition = initialPosition;
         _tracksConfig = tracksConfig;
         
-        ClockService.Instance.UpdateEvent += CustomUpdate;
+        ClockService.Instance.OnUpdateEvent += CustomOnUpdate;
 
         GenerateTrack();
     }
     
     public void Destroy()
     {
-        ClockService.Instance.UpdateEvent -= CustomUpdate;
+        ClockService.Instance.OnUpdateEvent -= CustomOnUpdate;
         Destroy(gameObject);
     }
 
-    private void CustomUpdate(float deltaTime)
+    private void CustomOnUpdate(float deltaTime)
     {
         transform.Translate(Vector3.left * deltaTime * GameService.Instance.Speed);
     }

@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b37a94bf5e07254ba6a0bd5e218e843, type: 3}
-  m_Name: RunnerConfig
+  m_Script: {fileID: 11500000, guid: 5ff03891cf33f744b8bb9028541ca92b, type: 3}
+  m_Name: SpeedConfig
   m_EditorClassIdentifier: 
-  keyToChangeTrack: 32
-  activeColor: {r: 1, g: 1, b: 0, a: 1}
-  inActiveColor: {r: 0.010368347, g: 0, b: 1, a: 0.6}
-  lives: 3
+  minSpeed: 1
+  maxSpeed: 30
+  speedIncrementPerSeconds: 1
+  timeToSlowAfterHit: 0.2
+  timeToRecoverSpeed: 3

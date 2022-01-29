@@ -23,7 +23,7 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
     private void Init()
     {
         GenerateInitialTracks();
-        ClockService.Instance.UpdateEvent += CustomUpdate;
+        ClockService.Instance.OnUpdateEvent += CustomOnUpdate;
     }
     
     private void GenerateInitialTracks()
@@ -52,7 +52,7 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
         return _currentTracks[_currentTracks.Count - 1].GetFinalPosition();
     }
 
-    private void CustomUpdate(float deltaTime)
+    private void CustomOnUpdate(float deltaTime)
     {
         if (_currentTracks.Count <= 0)
         {
