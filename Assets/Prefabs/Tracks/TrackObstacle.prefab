@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1649838019604700722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 9.05, y: 31.48, z: 1}
   m_Children: []
   m_Father: {fileID: 9123491193997491452}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0.161623, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.7984319, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481074034922660004}
   - component: {fileID: 7271040651681720939}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

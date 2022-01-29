@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5856924876763613843}
   - component: {fileID: 3477557046654740684}
   m_Layer: 0
-  m_Name: StartCollider01
+  m_Name: RewardCollider01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1efae4dcf411884d85097c4841b0990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackId: 0
+  _trackId: 1
   _layerTohit:
     serializedVersion: 2
     m_Bits: 128
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 5377065361683140897}
   - component: {fileID: 466800032545888892}
   m_Layer: 0
-  m_Name: StartCollider02
+  m_Name: RewardCollider02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1efae4dcf411884d85097c4841b0990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackId: 1
+  _trackId: 0
   _layerTohit:
     serializedVersion: 2
     m_Bits: 128

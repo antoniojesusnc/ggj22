@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class TrackModel : ITrackModel
 {
-    public List<int> Tracks01 { get; private set; }
-    public List<int> Tracks02 { get; private set; }
+    public List<int> Tracks01 { get; private set; }= new List<int>();
+    public List<int> Tracks02 { get; private set; }= new List<int>();
     
-    public List<int> Rewards01 { get; private set; }
-    public List<int> Rewards02 { get; private set; }
+    public List<int> Rewards01 { get; private set; }= new List<int>();
+    public List<int> Rewards02 { get; private set; }= new List<int>();
     
     public TracksConfig Config { get; private set; }
 
     public TrackModel(TracksConfig tracksConfig, float handicap)
     {
         Config = tracksConfig;
-        Tracks01 = new List<int>();
-        Tracks02 = new List<int>();
         int maxBlockPerSegment = Mathf.RoundToInt(Config.maxBlockPerSegment * handicap);
 
         List<int> track = GenerateTrack(Config.size, Config.segments, maxBlockPerSegment);

@@ -25,7 +25,7 @@ public class RunnerCollision : RunnerSwitcher
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer != _layerTohit)
+        if ((1 << collider.gameObject.layer) != _layerTohit)
         {
             return;
         }
