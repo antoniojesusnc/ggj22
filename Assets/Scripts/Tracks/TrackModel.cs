@@ -98,7 +98,8 @@ public class TrackModel : ITrackModel
     {
         List<int> newSegmentTrack = new List<int>();
 
-        while (newSegmentTrack.Count < rewardAmount)
+        int safety = 50000;
+        while (newSegmentTrack.Count < rewardAmount && safety-- > 0)
         {
             int randPosition = Random.Range(minValue, maxValue);
             int rangeMin = randPosition - Config.minObstacleDistance;

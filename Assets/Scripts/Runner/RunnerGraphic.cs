@@ -44,7 +44,6 @@ public class RunnerGraphic : RunnerSwitcher
         _animator.SetTrigger(animation.ToString());
         
         _spriteRenderer.sprite = GetSprite();
-        _currentAnimation = animation;
     }
 
     private void CustomUpdate(float deltaTime)
