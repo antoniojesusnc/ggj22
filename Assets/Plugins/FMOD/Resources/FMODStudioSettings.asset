@@ -160,7 +160,7 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 1
+      Value: 0
       HasValue: 1
     Logging:
       Value: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: ../FMod/GGJ2022 PRUEBA FMOD 2/GGJ2022 PRUEBA FMOD 2.fspro
-  sourceBankPath: ../FMod/Novo Bank
+  sourceBankPath: Assets/Sounds
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
