@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class RunnerController : MonoBehaviour
 {
@@ -16,7 +12,7 @@ public class RunnerController : MonoBehaviour
     private InputManager _inputManager;
 
     public event Action OnTrackChanged;
-
+    
     void Start()
     {
         Init();
@@ -25,12 +21,11 @@ public class RunnerController : MonoBehaviour
     private void Init()
     {
         _inputManager = new InputManager(_runnerConfig, OnInput);
-
-        var trackPositions = TrackManager.Instance.GetTrackPositions();
-        var runnerGrahics = GetComponentsInChildren<RunnerGraphic>();
+        
+        var runnerGrahics = GetComponentsInChildren<RunnerSwitcher>();
         for (int i = 0; i < runnerGrahics.Length; i++)
         {
-            runnerGrahics[i].Init(this, i, trackPositions[i], i == TrackController.Track01);
+            runnerGrahics[i].Init(this);
         }
     }
 
@@ -46,5 +41,12 @@ public class RunnerController : MonoBehaviour
             : TrackController.Track01;
 
         OnTrackChanged?.Invoke();
+    }
+
+    public void OnHitWithObstacle()
+    {
+        Debug.Log("OnHitWithObstacle");
+
+        GameService.Instance.OnHitWithObstacle();
     }
 }

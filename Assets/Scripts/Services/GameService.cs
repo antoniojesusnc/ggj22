@@ -27,5 +27,9 @@ public class GameService : MonoBehaviorSingleton<GameService>
     {
         State = GameState.Playing;
     }
-    
+
+    public void OnHitWithObstacle()
+    {
+        
+    }
 }

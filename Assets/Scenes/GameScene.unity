@@ -391,10 +391,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RunnerController
       objectReference: {fileID: 0}
-    - target: {fileID: 6473578090998027229, guid: 4772850f486103245875644b6cec591f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.274
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4772850f486103245875644b6cec591f, type: 3}
 --- !u!1001 &3322313913309665635
@@ -468,7 +464,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2111937978572011752, guid: 748011130aed1a541858dc6b79d4ba57, type: 3}
       propertyPath: _speed
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3368419255926250709, guid: 748011130aed1a541858dc6b79d4ba57, type: 3}
       propertyPath: m_RootOrder
