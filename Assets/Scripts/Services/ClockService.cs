@@ -4,7 +4,7 @@ using UnityEngine;
 public class ClockService : MonoBehaviorSingleton<ClockService>
 {
     public delegate void CustomUpdateDelegate(float deltaTime);
-    public event CustomUpdateDelegate UpdateEvent;
+    public event CustomUpdateDelegate OnUpdateEvent;
     public event CustomUpdateDelegate UpdateNonPausableEvent;
 
     private float _modTimeScale = 1f;
@@ -26,7 +26,7 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
                 continue;
             }
             
-            UpdateEvent?.Invoke(Time.deltaTime*_modTimeScale);
+            OnUpdateEvent?.Invoke(Time.deltaTime*_modTimeScale);
             UpdateNonPausableEvent?.Invoke(Time.deltaTime);
             yield return 0;
         }

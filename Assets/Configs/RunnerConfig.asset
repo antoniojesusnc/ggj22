@@ -15,3 +15,4 @@ MonoBehaviour:
   keyToChangeTrack: 32
   activeColor: {r: 1, g: 1, b: 0, a: 1}
   inActiveColor: {r: 0.010368347, g: 0, b: 1, a: 0.6}
+  lives: 3

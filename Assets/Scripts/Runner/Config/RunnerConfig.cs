@@ -10,4 +10,6 @@ public class RunnerConfig : ScriptableObject
     [Header("Graphic")] 
     public Color activeColor;
     public Color inActiveColor;
+
+    [Header("Config")] public int lives;
 }
