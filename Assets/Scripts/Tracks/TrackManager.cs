@@ -82,7 +82,7 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
 
     private TrackController GetTrackController(Vector3 initialPosition)
     {
-        return Instantiate(_trackPrefab, initialPosition, Quaternion.identity, _tracksParent);
+        return Instantiate(_trackPrefab, transform.position+initialPosition, Quaternion.identity, _tracksParent);
     }
 
     public List<Vector3> GetTrackPositions()
