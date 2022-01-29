@@ -97,18 +97,7 @@ public class TrackFloor : MonoBehaviour
     }
 
     public void CleanTrack()
-    {
-        for (int i = _obstaclesParent.childCount - 1; i >= 0; i--)
-        {
-            var child = _obstaclesParent.GetChild(i);
-            if (child.transform.position.x >= 0)
-            {
-                var trackObstacle = child.GetComponent<TrackObstacle>();
-                _trackObstacles[trackObstacle.TrackId].Remove(trackObstacle);
-                Destroy(child.gameObject);
-            }
-        }
-        
+    {        
         for (int i = _obstaclesParent.childCount - 1; i >= 0; i--)
         {
             var child = _obstaclesParent.GetChild(i);
