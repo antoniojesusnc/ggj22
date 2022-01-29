@@ -21,7 +21,8 @@ public class AudioController : MonoBehaviorSingleton<AudioController>
             {
                 continue;
             }
-            _audioSource.clip = _audioConfig.shortSounds[i].audioClip;
+            int randomIndex = Random.Range(0, _audioConfig.shortSounds[i].audioClips.Length);
+            _audioSource.clip = _audioConfig.shortSounds[i].audioClips[randomIndex];
             _audioSource.Play();
             return;
         }
