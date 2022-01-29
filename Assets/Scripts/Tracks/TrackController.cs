@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,6 +51,17 @@ public class TrackController : MonoBehaviour
     private void CustomUpdate(float deltaTime)
     {
         transform.Translate(Vector3.left * deltaTime * GameService.Instance.Speed);
+    }
+    
+    public List<Vector3> GetTrackPositions()
+    {
+        List<Vector3> trackPositions = new List<Vector3>();
+        for (int i = 0; i < _floorPosition.Count; i++)
+        {
+            trackPositions.Add(_floorPosition[i].position);
+        }
+
+        return trackPositions;
     }
     
     private void GenerateFloorDebug()
@@ -108,6 +118,4 @@ public class TrackController : MonoBehaviour
         }
         Debug.Log(track);
     }
-
-    
 }

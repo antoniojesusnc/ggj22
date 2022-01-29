@@ -20,6 +20,12 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
     {
         while (true)
         {
+            if (GameService.Instance.State != GameService.GameState.Playing)
+            {
+                yield return 0;
+                continue;
+            }
+            
             UpdateEvent?.Invoke(Time.deltaTime*_modTimeScale);
             UpdateNonPausableEvent?.Invoke(Time.deltaTime);
             yield return 0;

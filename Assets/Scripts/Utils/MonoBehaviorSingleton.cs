@@ -1,16 +1,26 @@
 using UnityEngine;
 
-public class MonoBehaviorSingleton<T> : MonoBehaviour
+public class MonoBehaviorSingleton<T> : MonoBehaviour where T : Object
 {
-    public static T Instance { get; private set; }
+    public static T Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<T>();
+            }
+            return _instance;
+        }
+    }
+
+    private static T _instance;
 
     protected virtual void Awake()
     {
-        if (Instance != null)
+        if (Instance.GetInstanceID() != GetInstanceID())
         {
             Destroy(gameObject);
         }
-        
-        Instance = this.GetComponent<T>();
     }
 }

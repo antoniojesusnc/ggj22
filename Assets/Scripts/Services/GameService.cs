@@ -19,6 +19,13 @@ public class GameService : MonoBehaviorSingleton<GameService>
     {
         base.Awake();
 
+        State = GameState.None;
+    }
+
+    [ContextMenu("Init")]
+    public void Init()
+    {
         State = GameState.Playing;
     }
+    
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackManager : MonoBehaviour
+public class TrackManager : MonoBehaviorSingleton<TrackManager>
 {
     [SerializeField] private TrackController _trackPrefab;
     [SerializeField] private Transform _tracksParent;
@@ -11,21 +11,27 @@ public class TrackManager : MonoBehaviour
     private TracksConfig _tracksConfig;
 
     private List<TrackController> _currentTracks = new List<TrackController>();
-    
-    [ContextMenu("DEBUG")]
-    private void DEBUG()
+
+
+    protected override void Awake()
     {
+        base.Awake();
+
         Init();
     }
     
     private void Init()
     {
+        GenerateInitialTracks();
+        ClockService.Instance.UpdateEvent += CustomUpdate;
+    }
+    
+    private void GenerateInitialTracks()
+    {
         for (int i = 0; i < _tracksConfig.numTracksAlive; i++)
         {
             GenerateTrack();
         }
-        
-        ClockService.Instance.UpdateEvent += CustomUpdate;
     }
 
     private void GenerateTrack()
@@ -74,5 +80,10 @@ public class TrackManager : MonoBehaviour
     private TrackController GetTrackController(Vector3 initialPosition)
     {
         return Instantiate(_trackPrefab, initialPosition, Quaternion.identity, _tracksParent);
+    }
+
+    public List<Vector3> GetTrackPositions()
+    {
+        return _currentTracks[0].GetTrackPositions();
     }
 }
