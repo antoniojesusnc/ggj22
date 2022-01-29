@@ -32,6 +32,11 @@ public class TrackController : MonoBehaviour
 
     public Dictionary<int, TrackFloor> _trackFloors = new Dictionary<int, TrackFloor>();
 
+    public float PercentageRunned => Mathf.Clamp01(-transform.position.x / _tracksConfig.size); 
+    
+    public bool IsCurrentTrack => transform.position.x > -_tracksConfig.size &&
+                                  transform.position.x <= 0;
+
     public void Init(TracksConfig tracksConfig, Vector3 initialPosition)
     {
         _initialPosition = initialPosition;
@@ -82,6 +87,7 @@ public class TrackController : MonoBehaviour
     {
         var floor = Instantiate(_floorPrefab, _floorPosition[trackId]);
         floor.SetData(trackId, _trackModel);
+        _trackFloors.Add(trackId, floor);
     }
 
     private ITrackModel GetTracks()
@@ -99,6 +105,14 @@ public class TrackController : MonoBehaviour
         return transform.position.x < -_tracksConfig.size * HOW_FAR_BEFORE_BE_DELETED;
     }
     
+    public void CleanTrack()
+    {
+        foreach (var track in _trackFloors)
+        {
+            track.Value.CleanObstacles();
+        }
+    }
+
     [ContextMenu("Test")]
     private void Test()
     {
@@ -109,13 +123,15 @@ public class TrackController : MonoBehaviour
         {
             track += $"{trackModel.Tracks01[i]}, ";
         }
+
         Debug.Log(track);
-        
+
         track = "Track02: ";
         for (int i = 0; i < trackModel.Tracks02.Count; i++)
         {
             track += $"{trackModel.Tracks01[i]}, ";
         }
+
         Debug.Log(track);
     }
 }

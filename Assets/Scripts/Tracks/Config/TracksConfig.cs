@@ -8,6 +8,10 @@ public class TracksConfig : ScriptableObject
     public float deltaHandicap;
     public float size;
 
-    [FormerlySerializedAs("_numTracksAlive")] [Header("Tracks Properties")] 
+    [Header("Tracks Properties")] 
     public int numTracksAlive;
+
+    [Header("After hit cleaning")]
+    [Range(0,1)]
+    public float deleteObstaclesIfLessThanPercentageElapsed;
 }

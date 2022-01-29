@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d19565a82a5cf40ba27684b4c17dc5, type: 3}
-  m_Name: TrackConfig
+  m_Script: {fileID: 11500000, guid: 5445566e4cb38da419444c14f90e1150, type: 3}
+  m_Name: HandicapConfig
   m_EditorClassIdentifier: 
-  minObstacleDistance: 5
-  deltaHandicap: 0.1
-  size: 100
-  numTracksAlive: 3
-  deleteObstaclesIfLessThanPercentageElapsed: 0.7
+  increaseHandicapPerSeconds: 0

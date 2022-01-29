@@ -14,6 +14,8 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
     [SerializeField]
     private SpeedController _speedController;
+    [SerializeField]
+    private HandicapController _handicapController;
     //public float Speed { get; private set; }
     public float Speed => _speedController.CurrentSpeed;
     public float _distance;
@@ -61,6 +63,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
     private void OnRunnerHit()
     {
         _speedController.OnHit();
+        _handicapController.OnHit();
     }
 
     private void GameOver()

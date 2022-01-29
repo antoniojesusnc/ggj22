@@ -12,7 +12,10 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
 
     private List<TrackController> _currentTracks = new List<TrackController>();
 
-
+    private TrackController CurrentTrack => _currentTracks.Find((track) => track.IsCurrentTrack);
+    private TrackController NextTrack =>
+        _currentTracks[ 1 + _currentTracks.FindIndex((track) => track.IsCurrentTrack)];
+    
     protected override void Awake()
     {
         base.Awake();
@@ -85,5 +88,15 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
     public List<Vector3> GetTrackPositions()
     {
         return _currentTracks[0].GetTrackPositions();
+    }
+
+    public void CleanAfterHit()
+    {
+        var currentTrack = CurrentTrack;
+        currentTrack.CleanTrack();
+        if (currentTrack.PercentageRunned > _tracksConfig.deleteObstaclesIfLessThanPercentageElapsed)
+        {
+            NextTrack.CleanTrack();
+        }
     }
 }

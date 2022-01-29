@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class TrackFloor : MonoBehaviour
@@ -43,7 +44,30 @@ public class TrackFloor : MonoBehaviour
         for (int i = 0; i < tracks.Count; i++)
         {
             var obstacle = Instantiate(_obstaclesPrefab, _obstaclesParent);
-            obstacle.SetPosition(tracks[i]);
+            obstacle.SetData(trackId, tracks[i]);
+
+            if (_trackObstacles.TryGetValue(trackId, out var tracksList))
+            {
+                tracksList.Add(obstacle);
+            }
+            else
+            {
+                _trackObstacles.Add(trackId, new List<TrackObstacle>(){obstacle});
+            }
+        }
+    }
+
+    public void CleanObstacles()
+    {
+        for (int i = _obstaclesParent.childCount - 1; i >= 0; i--)
+        {
+            var child = _obstaclesParent.GetChild(i);
+            if (child.transform.position.x >= 0)
+            {
+                var trackObstacle = child.GetComponent<TrackObstacle>();
+                _trackObstacles[trackObstacle.TrackId].Remove(trackObstacle);
+                Destroy(child.gameObject);
+            }
         }
     }
 }

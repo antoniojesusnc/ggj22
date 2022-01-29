@@ -11,20 +11,14 @@ public class SpeedController : MonoBehaviour
     [SerializeField] public float _currentSpeed;
     public float CurrentSpeed => _currentSpeed;
 
-    [SerializeField] 
+    private float _timeStampNormalIncrease;
+    
+    // lerp
     private float _timeStamp;
-    
-    [SerializeField]
     private float _realSpeed;
-    
-    [SerializeField]
     private bool _doingLerp;
-
-    [SerializeField]
     private float _initialSpeed;
-    [SerializeField]
     private float _finalSpeed;
-    [SerializeField]
     private float _duration;
     private Action _afterLerpAction;
     public void Init()
@@ -34,29 +28,27 @@ public class SpeedController : MonoBehaviour
 
     private void CustomUpdate(float deltaTime)
     {
-        _timeStamp += deltaTime;
-
         if (_doingLerp)
         {
-            DoingLerp();
+            DoingLerp(deltaTime);
         }
         else
         {
-            IncrementNormalSpeed();
+            IncrementNormalSpeed(deltaTime);
         }
     }
 
 
-    private void IncrementNormalSpeed()
+    private void IncrementNormalSpeed(float deltaTime)
     {
-        if (_timeStamp > 1)
-        {
-            _currentSpeed += _speedConfig.speedIncrementPerSeconds;
-            _timeStamp = 0;
-        }
+        _timeStampNormalIncrease += deltaTime;
+        var factor = Mathf.Clamp01(_timeStampNormalIncrease / _speedConfig.timeToReachMaxSpeed);
+        _currentSpeed = _speedConfig.speedIncreaseCurve.Evaluate(factor) * _speedConfig.maxSpeed;
     }
-    private void DoingLerp()
+    private void DoingLerp(float deltaTime)
     {
+        _timeStamp += deltaTime;
+        
         _currentSpeed = Mathf.Lerp(_initialSpeed, _finalSpeed, 
             _timeStamp / _duration );
 
