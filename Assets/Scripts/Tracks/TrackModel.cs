@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class TrackModel : ITrackModel
 {
+
+    private const int REWARD_LIMIT_ADJUSTMENT = 20;
+
     public List<int> Tracks01 { get; private set; } = new List<int>();
     public List<int> Tracks02 { get; private set; } = new List<int>();
 
@@ -21,7 +24,7 @@ public class TrackModel : ITrackModel
 
         if (track != null && track.Count > 0)
         {
-            SetRewards(track, Config.rewardAmount, 0, Config.size);
+            SetRewards(track, Config.rewardAmount, REWARD_LIMIT_ADJUSTMENT, Config.size - REWARD_LIMIT_ADJUSTMENT);
         }
 
     }
