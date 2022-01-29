@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TrackConfig
   m_EditorClassIdentifier: 
   minObstacleDistance: 5
-  deltaHandicap: 0.1
   maxBlockPerSegment: 10
   segments: 2
   size: 100
   numTracksAlive: 3
+  factorToPutDown: 0.7
   deleteObstaclesIfLessThanPercentageElapsed: 0.7
