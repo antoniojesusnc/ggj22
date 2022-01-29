@@ -18,6 +18,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
     private HandicapController _handicapController;
     //public float Speed { get; private set; }
     public float Speed => _speedController.CurrentSpeed;
+    public float Handicap => _handicapController.Handicap;
     public float Distance => _distance;
     private float _distance;
 

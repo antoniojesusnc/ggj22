@@ -13,22 +13,27 @@ public class TrackModel : ITrackModel
         Config = tracksConfig;
         Tracks01 = new List<int>();
         Tracks02 = new List<int>();
+        int maxBlockPerSegment = Mathf.RoundToInt(Config.maxBlockPerSegment * handicap);
 
-        List<int> tracks = generateTrack(Config.size, Config.segments, Config.maxBlockPerSegment);
+        List<int> track = generateTrack(Config.size, Config.segments, maxBlockPerSegment);
+        setTracks(track, Config.factorToPutDown);
+    }
 
+    private void setTracks(List<int> track, float configFactorToPutDown)
+    {
         float factorToPutDown = 0.5f;
-        
-        foreach (var item in tracks)
+
+        foreach (var item in track)
         {
             if (Random.value >= factorToPutDown)
             {
                 Tracks01.Add(item);
-                factorToPutDown = 0.7f;
+                factorToPutDown = configFactorToPutDown;
             }
             else
             {
                 Tracks02.Add(item);
-                factorToPutDown = 0.3f;
+                factorToPutDown = 1 - configFactorToPutDown;
             }
         }
     }
@@ -37,9 +42,6 @@ public class TrackModel : ITrackModel
     private List<int> generateTrack(int trackSize, int segments, int maxBlockPerSegment)
     {
         int segmentSize = trackSize / segments;
-        // Debug.Log("segmentSize: " + segmentSize);
-
-        // int maxBlockPerSegment = 10; // 20 * handicap
         List<int> track = new List<int>();
 
         for (int i = 0; i < segments; i++)
@@ -54,9 +56,8 @@ public class TrackModel : ITrackModel
         return track;
     }
 
-    private List<int> addTrackSegment(List<int> track, int maxBlockPerSegment, int minValue, int maxValue)
+    private void addTrackSegment(List<int> track, int maxBlockPerSegment, int minValue, int maxValue)
     {
-
         for (int i = 0; i < maxBlockPerSegment; i++)
         {
             int randPosition = Random.Range(minValue, maxValue);
@@ -67,7 +68,5 @@ public class TrackModel : ITrackModel
                 track.Add(randPosition);
             }
         }
-
-        return track;
     }
 }

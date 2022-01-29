@@ -16,9 +16,6 @@ public class TrackController : MonoBehaviour
     [SerializeField]
     [Tooltip("Do not user this by editor")]
     private TracksConfig _tracksConfig;
-    
-    [SerializeField]
-    private float _handicap;
 
     [Header("Track Pieces")]
     [SerializeField]
@@ -94,7 +91,7 @@ public class TrackController : MonoBehaviour
 
     private ITrackModel GetTracks()
     {
-        return new TrackModel(_tracksConfig, _handicap);
+        return new TrackModel(_tracksConfig, GameService.Instance.Handicap);
     }
 
     public Vector3 GetFinalPosition()
@@ -148,9 +145,6 @@ public class TrackController : MonoBehaviour
         var trackModel = new TrackModel(configMock, handicapMock);
 
         Debug.Log(_tracksConfig);
-
-        Debug.Log(_handicap);
-
 
         string track = "Track01: ";
         for (int i = 0; i < trackModel.Tracks01.Count; i++)
