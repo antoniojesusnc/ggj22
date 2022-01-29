@@ -13,7 +13,8 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
     
     private InputManager _inputManager;
     public event Action OnTrackChanged;
-    public event Action OnHit;
+    public event Action OnHitObstacle;
+    public event Action OnHitReward;
     public event Action OnDie;
     
     void Start()
@@ -50,9 +51,15 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
     public void OnHitWithObstacle()
     {
         --_currentLives;
-        OnHit?.Invoke();
+        OnHitObstacle?.Invoke();
         
         CheckIfDie();
+    }
+
+    public void OnHitWithReward()
+    {
+        _currentLives += _runnerConfig.rewardHPIncrease;
+        OnHitReward?.Invoke();
     }
 
     private void CheckIfDie()

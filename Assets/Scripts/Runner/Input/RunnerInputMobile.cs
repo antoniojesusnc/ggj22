@@ -19,7 +19,7 @@ public class RunnerInputMobile : IRunnerInput
     
     private void CustomUpdate(float deltaTime)
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             OnKeyPressed?.Invoke();
         }

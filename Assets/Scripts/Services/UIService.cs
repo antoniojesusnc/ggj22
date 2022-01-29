@@ -12,6 +12,9 @@ public class UIService : MonoBehaviorSingleton<UIService>
     [Header("Distance Counter")]
     [SerializeField] public TMPro.TextMeshProUGUI _distanceCounter;
     
+    [Header("Popups")]
+    [SerializeField] public UIGameOver _gameOver;
+    
 
     private List<UILives> _lives = new List<UILives>();
     RunnerController _runnerController;
@@ -22,6 +25,12 @@ public class UIService : MonoBehaviorSingleton<UIService>
        
         SetLives();
         SetDistanceCounter();
+        InitPopups();
+    }
+
+    private void InitPopups()
+    {
+        _gameOver.Init();
     }
 
     private void SetDistanceCounter()
@@ -43,10 +52,11 @@ public class UIService : MonoBehaviorSingleton<UIService>
             live.Init();
             _lives.Add(live);
         }
-        RunnerController.Instance.OnHit += OnRunnerHit;
-        OnRunnerHit();
+        RunnerController.Instance.OnHitObstacle += CheckLives;
+        RunnerController.Instance.OnHitReward += CheckLives;
+        CheckLives();
     }
-    private void OnRunnerHit()
+    private void CheckLives()
     {
         for (int i = 0; i < _runnerController.MaxLives; i++)
         {

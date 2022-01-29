@@ -39,9 +39,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6389308289477202480}
-  - component: {fileID: -2867701413196282376}
+  - component: {fileID: -7886518317738665314}
   m_Layer: 0
-  m_Name: TrackFloor
+  m_Name: TrackReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2867701413196282376
+--- !u!114 &-7886518317738665314
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,12 +72,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6203927500026108735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7aa40c4c10409c4f9c7f9d334250fc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 81d2e72aa73ebf148ac123e20ae18338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _graphic: {fileID: 7808541516012115582}
-  _obstaclesPrefab: {fileID: 5416195086058446728, guid: 37799a9d849b1014bbaf51cc81bb5c7b, type: 3}
-  _obstaclesParent: {fileID: 6010709979675987671}
 --- !u!1 &6551944757915250365
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 6551944757915250365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 6389308289477202480}
   m_RootOrder: 1
@@ -149,12 +146,12 @@ SpriteRenderer:
   m_SortingLayerID: 1339669335
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7d70ccf8263218b4cb9e3e59e27d9665, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.25, y: 2.25}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

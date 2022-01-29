@@ -9,7 +9,7 @@ public class TrackController : MonoBehaviour
     public const int TrackAmount = 2;
     
     // size times that the element should live
-    private const int HOW_FAR_BEFORE_BE_DELETED = 2;
+    private const float HOW_FAR_BEFORE_BE_DELETED = 1.2f;
     
     // TODO Delete the serialize field
     [Header("Track Configs")]
@@ -20,7 +20,7 @@ public class TrackController : MonoBehaviour
     [Header("Track Pieces")]
     [SerializeField]
     private TrackFloor _floorPrefab;
-    
+
     [SerializeField]
     private List<Transform> _floorPosition;
 
@@ -106,7 +106,7 @@ public class TrackController : MonoBehaviour
     {
         foreach (var track in _trackFloors)
         {
-            track.Value.CleanObstacles();
+            track.Value.CleanTrack();
         }
     }
 

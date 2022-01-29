@@ -6,6 +6,8 @@ public class TrackModelMock :  ITrackModel
 {
     public List<int> Tracks01 { get; } = new List<int>();
     public List<int> Tracks02 { get; } = new List<int>();
+    public List<int> Rewards01 { get; } = new List<int>();
+    public List<int> Rewards02 { get; } = new List<int>();
     public TracksConfig Config { get; }
 
     public TrackModelMock(TracksConfig tracksConfig, float handicap)

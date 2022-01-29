@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameService : MonoBehaviorSingleton<GameService>
 {
@@ -53,7 +54,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
     private void SuscribeToRunnerEvents()
     {
-        RunnerController.Instance.OnHit += OnRunnerHit;
+        RunnerController.Instance.OnHitObstacle += OnRunnerHitObstacle;
         RunnerController.Instance.OnDie += OnRunnerDie;
     }
 
@@ -62,7 +63,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
         GameOver();
     }
 
-    private void OnRunnerHit()
+    private void OnRunnerHitObstacle()
     {
         _speedController.OnHit();
         _handicapController.OnHit();
@@ -87,5 +88,12 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
         State = newState;
         OnChangeState?.Invoke();
+    }
+
+    public void ReloadGame()
+    {
+        ClockService.Instance.Dispose();
+        
+        SceneManager.LoadScene(SceneUtils.GameScene);
     }
 }

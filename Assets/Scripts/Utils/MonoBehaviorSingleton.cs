@@ -1,4 +1,7 @@
+using System;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class MonoBehaviorSingleton<T> : MonoBehaviour where T : Object
 {
@@ -22,5 +25,10 @@ public class MonoBehaviorSingleton<T> : MonoBehaviour where T : Object
         {
             Destroy(gameObject);
         }
+    }
+
+    public virtual void Dispose()
+    {
+        
     }
 }

@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class TrackModel : ITrackModel
 {
-    public List<int> Tracks01 { get; private set; }
-    public List<int> Tracks02 { get; private set; }
+    public List<int> Tracks01 { get; private set; }= new List<int>();
+    public List<int> Tracks02 { get; private set; }= new List<int>();
+    
+    public List<int> Rewards01 { get; private set; }= new List<int>();
+    public List<int> Rewards02 { get; private set; }= new List<int>();
+    
     public TracksConfig Config { get; private set; }
 
     public TrackModel(TracksConfig tracksConfig, float handicap)
     {
         Config = tracksConfig;
-        Tracks01 = new List<int>();
-        Tracks02 = new List<int>();
         int maxBlockPerSegment = Mathf.RoundToInt(Config.maxBlockPerSegment * handicap);
 
-        List<int> track = generateTrack(Config.size, Config.segments, maxBlockPerSegment);
-        setTracks(track, Config.factorToPutDown);
+        List<int> track = GenerateTrack(Config.size, Config.segments, maxBlockPerSegment);
+        SetTracks(track, Config.factorToPutDown);
     }
 
-    private void setTracks(List<int> track, float configFactorToPutDown)
+    private void SetTracks(List<int> track, float configFactorToPutDown)
     {
         float factorToPutDown = 0.5f;
 
@@ -39,7 +41,7 @@ public class TrackModel : ITrackModel
     }
 
 
-    private List<int> generateTrack(int trackSize, int segments, int maxBlockPerSegment)
+    private List<int> GenerateTrack(int trackSize, int segments, int maxBlockPerSegment)
     {
         int segmentSize = trackSize / segments;
         List<int> track = new List<int>();
@@ -48,7 +50,7 @@ public class TrackModel : ITrackModel
         {
             int minValue = (i * segmentSize) + 1;
             int maxValue = minValue + segmentSize - 1;
-            addTrackSegment(track, maxBlockPerSegment, minValue, maxValue);
+            AddTrackSegment(track, maxBlockPerSegment, minValue, maxValue);
         }
 
         track.Sort();
@@ -56,7 +58,7 @@ public class TrackModel : ITrackModel
         return track;
     }
 
-    private void addTrackSegment(List<int> track, int maxBlockPerSegment, int minValue, int maxValue)
+    private void AddTrackSegment(List<int> track, int maxBlockPerSegment, int minValue, int maxValue)
     {
         for (int i = 0; i < maxBlockPerSegment; i++)
         {

@@ -43,7 +43,8 @@ public class SpeedController : MonoBehaviour
     {
         _timeStampNormalIncrease += deltaTime;
         var factor = Mathf.Clamp01(_timeStampNormalIncrease / _speedConfig.timeToReachMaxSpeed);
-        _currentSpeed = _speedConfig.speedIncreaseCurve.Evaluate(factor) * _speedConfig.maxSpeed;
+        var curveFactor = _speedConfig.speedIncreaseCurve.Evaluate(factor);
+        _currentSpeed = Mathf.Lerp(_speedConfig.minSpeed,  _speedConfig.maxSpeed, curveFactor);
     }
     private void DoingLerp(float deltaTime)
     {

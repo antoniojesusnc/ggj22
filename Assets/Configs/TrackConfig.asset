@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minObstacleDistance: 5
   maxBlockPerSegment: 10
-  segments: 2
+  segments: 3
   size: 100
-  numTracksAlive: 3
+  numTracksAlive: 2
   factorToPutDown: 0.7
   deleteObstaclesIfLessThanPercentageElapsed: 0.7
+  floorGraphic:
+  - {fileID: 21300000, guid: 7d70ccf8263218b4cb9e3e59e27d9665, type: 3}
+  - {fileID: 21300000, guid: 3e53d6d47ae7c25439aad3618a75bdd2, type: 3}
+  floorSize: 8
