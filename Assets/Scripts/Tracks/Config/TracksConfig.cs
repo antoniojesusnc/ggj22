@@ -11,6 +11,7 @@ public class TracksConfig : ScriptableObject
     public int size;
     public int numTracksAlive;
     public float factorToPutDown;
+    public int rewardAmount;
 
     [Header("After hit cleaning")]
     [Range(0,1)]
