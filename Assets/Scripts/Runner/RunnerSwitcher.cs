@@ -7,7 +7,7 @@ public abstract class RunnerSwitcher : MonoBehaviour
     
     protected RunnerController _runnerController;
     
-    public void Init(RunnerController runnerController)
+    public virtual void Init(RunnerController runnerController)
     {
         _runnerController = runnerController;
         
