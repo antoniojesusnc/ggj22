@@ -12,12 +12,12 @@ public class GameService : MonoBehaviorSingleton<GameService>
     }
     public GameState State { get; private set; }
 
-    [SerializeField] public float _speed;
+    [SerializeField]
+    private SpeedController _speedController;
     //public float Speed { get; private set; }
-    public float Speed => _speed;
-
+    public float Speed => _speedController.CurrentSpeed;
     public float _distance;
-    
+
     public event Action<float> OnDistanceChange;
     
     public event Action OnChangeState;
@@ -29,7 +29,11 @@ public class GameService : MonoBehaviorSingleton<GameService>
         SuscribeToRunnerEvents();
         SetState(GameState.None);
 
+        _speedController.Init();
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
+        
+        // for know, start After time
+        ClockService.Instance.AddTimer(2, false, Init);
     }
 
     private void CustomUpdate(float deltaTime)
@@ -56,15 +60,14 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
     private void OnRunnerHit()
     {
-        
+        _speedController.OnHit();
     }
 
     private void GameOver()
     {
         SetState(GameState.GameOver);
     }
-
-    [ContextMenu("Init")]
+    
     public void Init()
     {
         SetState(GameState.Playing);

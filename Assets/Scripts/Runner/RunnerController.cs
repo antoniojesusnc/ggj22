@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class RunnerController : MonoBehaviorSingleton<RunnerController>
 {
-    [SerializeField] private int _currentLives;
+    [SerializeField] private float _currentLives;
 
     [SerializeField] private RunnerConfig _runnerConfig;
     public RunnerConfig RunnerConfig => _runnerConfig;
     public int CurrentTrack { get; private set; }
-    public int CurrentLives => _currentLives;
+    public float CurrentLives => _currentLives;
     public int MaxLives => _runnerConfig.lives;
     
     private InputManager _inputManager;
