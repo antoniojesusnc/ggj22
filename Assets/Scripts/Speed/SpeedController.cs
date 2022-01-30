@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 
 public class SpeedController : MonoBehaviour
 {
-    [SerializeField]
     private SpeedConfig _speedConfig;
     
     [SerializeField] public float _currentSpeed;
@@ -23,6 +22,8 @@ public class SpeedController : MonoBehaviour
     private Action _afterLerpAction;
     public void Init()
     {
+        _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
+            
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
     }
 

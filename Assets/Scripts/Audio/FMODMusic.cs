@@ -9,11 +9,9 @@ public class FMODMusic : MonoBehaviour
     private FMOD.Studio.EventInstance instance;
     [SerializeField]
     private FMODUnity.EventReference fmodEvent;
-    [SerializeField]
     private SpeedConfig _speedConfig;
     [SerializeField]
     private FMODUnity.EditorParamRef _parameter;
-
 
     private int _velocity;
     private int _mod;
@@ -21,6 +19,8 @@ public class FMODMusic : MonoBehaviour
     
     void Start()
     {
+        _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
+        
         GameService.Instance.OnChangeState += OnChangedState;
         OnChangedState();
    

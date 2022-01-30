@@ -5,7 +5,6 @@ using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
    private const float DELETE_SIZE_RATE = 1.2f;
-   [SerializeField] 
    private BackgroundConfig _backgroundConfig;
    
    [SerializeField] 
@@ -16,6 +15,8 @@ public class BackgroundController : MonoBehaviour
 
    void Start()
    {
+      _backgroundConfig = GameService.Instance.CurrentDifficulty.backgroundConfig;
+      
       ClockService.Instance.OnUpdateEvent += CustomUpdate;
 
       _backgroundInfos.Add(_backgroundConfig.backgrounds[0]);

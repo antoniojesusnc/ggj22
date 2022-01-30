@@ -8,10 +8,12 @@ public class HandicapController : MonoBehaviour
     [SerializeField] public float _handicap;
     public float Handicap => _handicap;
 
-    [SerializeField] private HandicapConfig _handicapConfig;
+    private HandicapConfig _handicapConfig;
 
     private void Awake()
     {
+        _handicapConfig = GameService.Instance.CurrentDifficulty.handicapConfig;
+        
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
     }
 

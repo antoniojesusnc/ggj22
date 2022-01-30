@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SkyController : MonoBehaviour
 {
-   [SerializeField] 
    private SkyConfig _skyConfig;
    
    [SerializeField] 
@@ -12,6 +11,8 @@ public class SkyController : MonoBehaviour
    
    void Start()
    {
+      _skyConfig = GameService.Instance.CurrentDifficulty.skyConfig;
+      
       ClockService.Instance.OnUpdateEvent += CustomUpdate;
    }
 

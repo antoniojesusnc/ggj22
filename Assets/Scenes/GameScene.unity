@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b75377997c20740a5184a989ac2b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioConfig: {fileID: 11400000, guid: d8ff67887b40d0e41a775b5b5d5a343a, type: 2}
+  _audioConfig: {fileID: 11400000, guid: aa3e0af1638e24d428807877559554f3, type: 2}
   _audioSource: {fileID: 1246236073}
 --- !u!1001 &777609405056953893
 PrefabInstance:
@@ -563,6 +563,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2111937978572011752, guid: 748011130aed1a541858dc6b79d4ba57, type: 3}
+      propertyPath: _difficultyConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 79f73964251734144808da348f36ebf5, type: 2}
     - target: {fileID: 2734110546654931196, guid: 748011130aed1a541858dc6b79d4ba57, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

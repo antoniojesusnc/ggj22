@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec176b0275eb7dd4abfa06d78accfb35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _difficultyConfig: {fileID: 11400000, guid: 79f73964251734144808da348f36ebf5, type: 2}
   _speedController: {fileID: 6264782679968022567}
   _handicapController: {fileID: 2582730272743836526}
 --- !u!114 &6264782679968022567
@@ -181,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea957d5f213462b498d11aa69f84e2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedConfig: {fileID: 11400000, guid: fb074b1bdcde08a469bb93a73c1d42da, type: 2}
   _currentSpeed: 0
 --- !u!114 &2582730272743836526
 MonoBehaviour:
@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handicap: 0
-  _handicapConfig: {fileID: 11400000, guid: 570be6bad93059c4a92207e639562526, type: 2}
 --- !u!1001 &8901836931758511937
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class AudioController : MonoBehaviorSingleton<AudioController>
     
     public void PlaySound(AudioConfig.SoundIDs soundName)
     {
-        
         for (int i = 0; i < _audioConfig.shortSounds.Count; i++)
         {
             if (_audioConfig.shortSounds[i].soundID != soundName)
