@@ -203,6 +203,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3368419255926250709}
     m_Modifications:
+    - target: {fileID: 345656098163826358, guid: 1d6239024d0d101479c974887738e46c, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 545189445723296791, guid: 1d6239024d0d101479c974887738e46c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -560
+      objectReference: {fileID: 0}
+    - target: {fileID: 545189445723296791, guid: 1d6239024d0d101479c974887738e46c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -135.00006
+      objectReference: {fileID: 0}
     - target: {fileID: 6236483279214076331, guid: 1d6239024d0d101479c974887738e46c, type: 3}
       propertyPath: m_Name
       value: UiService
@@ -291,9 +303,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6654116023958207311, guid: 1d6239024d0d101479c974887738e46c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -559
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654116023958207311, guid: 1d6239024d0d101479c974887738e46c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -139
+      objectReference: {fileID: 0}
     - target: {fileID: 6807242002245058493, guid: 1d6239024d0d101479c974887738e46c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136414074355120859, guid: 1d6239024d0d101479c974887738e46c, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6239024d0d101479c974887738e46c, type: 3}

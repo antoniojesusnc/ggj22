@@ -11,6 +11,7 @@ public class UIService : MonoBehaviorSingleton<UIService>
     
     [Header("Distance Counter")]
     [SerializeField] public TMPro.TextMeshProUGUI _distanceCounter;
+    [SerializeField] public TMPro.TextMeshProUGUI _distanceCounterBack;
     
     [Header("Popups")]
     [SerializeField] public UIGameOver _gameOver;
@@ -52,7 +53,9 @@ public class UIService : MonoBehaviorSingleton<UIService>
 
     private void OnDistanceChange(float distance)
     {
-        _distanceCounter.text = string.Format(DISTANCE_COUNTER_FORMAT, distance.ToString("N0"));
+        string distanceFormatted = string.Format(DISTANCE_COUNTER_FORMAT, distance.ToString("N0"));
+        _distanceCounter.text = distanceFormatted;
+        _distanceCounterBack.text = distanceFormatted;
     }
 
     private void SetLives()
