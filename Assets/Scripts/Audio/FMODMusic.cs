@@ -10,17 +10,13 @@ public class FMODMusic : MonoBehaviour
     [SerializeField]
     private FMODUnity.EventReference fmodEvent;
     private SpeedConfig _speedConfig;
-    [SerializeField]
-    private FMODUnity.EditorParamRef _parameter;
-
+    
     private int _velocity;
     private int _mod;
     private float _musicTracksAmount;
     
     void Start()
-    {
-        _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
-        
+    {      
         GameService.Instance.OnChangeState += OnChangedState;
         OnChangedState();
    
@@ -28,10 +24,11 @@ public class FMODMusic : MonoBehaviour
 
     private void OnChangedState()
     {
-        if (GameService.Instance.State == GameService.GameState.Playing)
+        if (GameService.Instance.State == GameService.GameState.None)
         {
+            _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
             instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-            _musicTracksAmount = _parameter.Max;
+            _musicTracksAmount = 3;
             _mod = Mathf.RoundToInt(_speedConfig.maxSpeed / _musicTracksAmount);
             ClockService.Instance.OnUpdateEvent += CustomUpdate;
 
@@ -41,6 +38,7 @@ public class FMODMusic : MonoBehaviour
         else if (GameService.Instance.State == GameService.GameState.GameOver)
         {
             StopMusic();
+            AudioController.Instance.PlaySound(AudioConfig.SoundIDs.gameover);
             ClockService.Instance.OnUpdateEvent -= CustomUpdate;
         }
     }

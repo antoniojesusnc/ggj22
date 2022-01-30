@@ -13,5 +13,6 @@ public class AnimationUtils
         HIT_BLACK = 7,
         INIT = 8,
         INIT_BLACK = 9,
+        GAME_OVER = 10,
     }
 }

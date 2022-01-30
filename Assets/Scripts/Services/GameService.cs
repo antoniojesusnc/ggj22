@@ -44,7 +44,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
         
         // for know, start After time
-        ClockService.Instance.AddTimer(2, false, Init);
+        ClockService.Instance.AddTimer(_difficultyConfig.timeToStart, false, Init);
     }
 
     private void CustomUpdate(float deltaTime)
@@ -72,17 +72,23 @@ public class GameService : MonoBehaviorSingleton<GameService>
     private void OnRunnerHitObstacle()
     {
         _speedController.OnHit();
-        _handicapController.OnHit();
+
+        if (!RunnerController.Instance.IsDead)
+        {
+            TrackManager.Instance.CleanAfterHit();
+        }
     }
 
     private void GameOver()
     {
         SetState(GameState.GameOver);
+        ClockService.Instance.GameOver();
     }
     
     public void Init()
     {
         SetState(GameState.Playing);
+        ClockService.Instance.Play();
     }
 
     public void SetState(GameState newState)
