@@ -94,12 +94,12 @@ public class TrackController : MonoBehaviour
 
     public Vector3 GetFinalPosition()
     {
-        return transform.position + Vector3.right * _tracksConfig.size;
+        return transform.localPosition + Vector3.right * _tracksConfig.size;
     }
     
     public bool ShouldBeDeleted()
     {
-        return transform.position.x < -_tracksConfig.size * HOW_FAR_BEFORE_BE_DELETED;
+        return transform.localPosition.x < -_tracksConfig.size * HOW_FAR_BEFORE_BE_DELETED;
     }
     
     public void CleanTrack()

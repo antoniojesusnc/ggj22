@@ -20,6 +20,10 @@ public class RunnerInputStandalone : IRunnerInput
     
     private void CustomUpdate(float deltaTime)
     {
+        if (GameService.Instance.State != GameService.GameState.Playing)
+        {
+            return;
+        }
         if (Input.GetKeyDown(_runnerConfig.keyToChangeTrack))
         {
             OnKeyPressed?.Invoke();

@@ -9,6 +9,7 @@ public class AudioComponent : MonoBehaviour
 
     public void PlaySound()
     {
+        
         AudioController.Instance.PlaySound(soundID);
     }
 }

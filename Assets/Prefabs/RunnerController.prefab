@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 7455296420666990899}
   - component: {fileID: 5031292107691987305}
   - component: {fileID: 469069666074885903}
+  - component: {fileID: 1270310428456084762}
   m_Layer: 0
   m_Name: BlockCollider01
   m_TagString: Untagged
@@ -223,6 +224,18 @@ MonoBehaviour:
       - m_Target: {fileID: 554281117008167695}
         m_TargetAssemblyTypeName: RunnerController, Assembly-CSharp
         m_MethodName: OnHitWithObstacle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1270310428456084762}
+        m_TargetAssemblyTypeName: AudioComponent, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -280,6 +293,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 3.25}
   m_EdgeRadius: 0
+--- !u!114 &1270310428456084762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618619835852685528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9143e779f03c1408e361fb8aa138d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: 1
 --- !u!1 &2952565795974470078
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +437,7 @@ GameObject:
   - component: {fileID: 2702263553507616341}
   - component: {fileID: 5377065361683140897}
   - component: {fileID: 466800032545888892}
+  - component: {fileID: 8649289691029917826}
   m_Layer: 0
   m_Name: RewardCollider02
   m_TagString: Untagged
@@ -444,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1efae4dcf411884d85097c4841b0990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackId: 0
+  _trackId: 1
   _layerTohit:
     serializedVersion: 2
     m_Bits: 128
@@ -454,6 +481,18 @@ MonoBehaviour:
       - m_Target: {fileID: 554281117008167695}
         m_TargetAssemblyTypeName: RunnerController, Assembly-CSharp
         m_MethodName: OnHitWithReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8649289691029917826}
+        m_TargetAssemblyTypeName: AudioComponent, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -511,3 +550,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.96, y: 3.25}
   m_EdgeRadius: 0
+--- !u!114 &8649289691029917826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7708883495829818156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb9143e779f03c1408e361fb8aa138d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: 0
