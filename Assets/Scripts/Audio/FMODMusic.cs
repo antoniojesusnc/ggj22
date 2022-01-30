@@ -39,6 +39,7 @@ public class FMODMusic : MonoBehaviour
         else if (GameService.Instance.State == GameService.GameState.GameOver)
         {
             StopMusic();
+            AudioController.Instance.PlaySound(AudioConfig.SoundIDs.gameover);
             ClockService.Instance.OnUpdateEvent -= CustomUpdate;
         }
     }

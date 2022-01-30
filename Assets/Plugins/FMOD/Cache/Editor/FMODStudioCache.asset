@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Sounds/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637790953144397308
+  lastModified: 637790751536449362
   FileSizes:
   - Name: 
     Value: 802
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: Assets/Sounds/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637790953144392296
+  lastModified: 637790749584183987
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -55,14 +55,12 @@ MonoBehaviour:
   - {fileID: -634488350257813411}
   EditorEvents:
   - {fileID: 8142856232175480316}
-  EditorParameters:
-  - {fileID: 8105491875275356467}
+  EditorParameters: []
   MasterBanks:
   - {fileID: -634488350257813411}
   StringsBanks:
   - {fileID: -6084816681564349209}
-  - {fileID: -6084816681564349209}
-  cacheTime: 637790953144397308
+  cacheTime: 637790751536449362
   cacheVersion: 10
 --- !u!114 &8105491875275356467
 MonoBehaviour:

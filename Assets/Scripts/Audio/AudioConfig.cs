@@ -9,7 +9,8 @@ public class AudioConfig : ScriptableObject
     {
         coin,
         collision,
-        changetrack
+        gameover,
+        startmusic
     }
     public List<shortSoundsConfig> shortSounds;
 
@@ -18,6 +19,8 @@ public class AudioConfig : ScriptableObject
     public class shortSoundsConfig
     {
         public SoundIDs soundID;
+        [Range(0,1)]
+        public float volume = 1f;
         public AudioClip[] audioClips;
 
     }
