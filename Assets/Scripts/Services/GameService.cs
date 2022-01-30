@@ -44,7 +44,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
         
         // for know, start After time
-        ClockService.Instance.AddTimer(2, false, Init);
+        ClockService.Instance.AddTimer(_difficultyConfig.timeToStart, false, Init);
     }
 
     private void CustomUpdate(float deltaTime)
