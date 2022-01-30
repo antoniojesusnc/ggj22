@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c679d7acfc8804c84d2b98bd2df52d, type: 3}
   m_Name: DifficultyConfig
   m_EditorClassIdentifier: 
+  currentDifficulty: 1
   difficultyConfigInfos:
   - backgroundConfig: {fileID: 11400000, guid: d586baa9de3759a46919985e60c609ca, type: 2}
     handicapConfig: {fileID: 11400000, guid: 570be6bad93059c4a92207e639562526, type: 2}

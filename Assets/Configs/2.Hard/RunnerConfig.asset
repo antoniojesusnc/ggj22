@@ -20,16 +20,14 @@ MonoBehaviour:
   animationsClipsBySpeed:
   - speedInit: 0
     animation: 0
-  - speedInit: 7
-    animation: 1
   - speedInit: 15
+    animation: 1
+  - speedInit: 25
     animation: 2
   animationsBlackClipsBySpeed:
   - speedInit: 0
     animation: 4
-  - speedInit: 7
-    animation: 5
   - speedInit: 15
+    animation: 5
+  - speedInit: 25
     animation: 6
-  normalHit: {fileID: 7400000, guid: d28be405b16f53e449c7970ff6e20c85, type: 2}
-  blackHit: {fileID: 7400000, guid: d28be405b16f53e449c7970ff6e20c85, type: 2}
