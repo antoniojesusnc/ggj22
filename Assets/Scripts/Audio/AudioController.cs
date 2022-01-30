@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviorSingleton<AudioController>
 {
@@ -10,7 +11,22 @@ public class AudioController : MonoBehaviorSingleton<AudioController>
 
     private void Start()
     {
-        PlaySound(AudioConfig.SoundIDs.startmusic);
+        
+        SceneManager.sceneLoaded += onLoaded;
+
+        
+    }
+
+    private void onLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        var AllAudios = GetComponents<AudioSource>();
+        for (int i = AllAudios.Length - 1; i >= 0; i--)
+        {
+            Destroy(AllAudios[i]);
+        }
+
+
+        
     }
 
     public void PlaySound(AudioConfig.SoundIDs soundName)
@@ -38,11 +54,14 @@ public class AudioController : MonoBehaviorSingleton<AudioController>
      
     }
 
+    
+    
     private void DestroyAudioSource(AudioSource audioSource)
     {
        
         Destroy(audioSource);
     }
+
 
     private AudioSource CreateAudioSource()
     {

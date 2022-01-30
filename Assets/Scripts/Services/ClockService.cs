@@ -12,8 +12,9 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
     private float _modTimeScale = 1f;
 
     private List<ClockServiceTimers> _timers = new List<ClockServiceTimers>();
-    
-    
+
+    private bool doUpdate;
+
     protected override void Awake()
     {
         base.Awake();
@@ -40,12 +41,12 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
         {
             UpdateNonPausableEvent?.Invoke(Time.deltaTime);
             CheckTimers(Time.deltaTime, false);
-            
-            if (GameService.Instance.State != GameService.GameState.Playing)
+
+            if (!doUpdate)
             {
                 yield return 0;
                 continue;
-            }
+            }    
 
             float deltaTimeScaled = Time.deltaTime * _modTimeScale;
             OnUpdateEvent?.Invoke(deltaTimeScaled);
@@ -54,6 +55,16 @@ public class ClockService : MonoBehaviorSingleton<ClockService>
         }
     }
 
+    public void Play()
+    {
+        doUpdate = true;
+    }
+
+    public void GameOver()
+    {
+        doUpdate = false;
+    }
+    
     private void CheckTimers(float deltaTime, bool canBePausedTimers)
     {
         for (int i = _timers.Count - 1; i >= 0; i--)

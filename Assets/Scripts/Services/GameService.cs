@@ -82,11 +82,13 @@ public class GameService : MonoBehaviorSingleton<GameService>
     private void GameOver()
     {
         SetState(GameState.GameOver);
+        ClockService.Instance.GameOver();
     }
     
     public void Init()
     {
         SetState(GameState.Playing);
+        ClockService.Instance.Play();
     }
 
     public void SetState(GameState newState)
