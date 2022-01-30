@@ -4,6 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DifficultyConfig", menuName = "Game/new Difficulty Config", order = 1)]
 public class DifficultyConfig : ScriptableObject
 {
+    [Header("General Configs")] [SerializeField]
+    public int timeToStart;
+    
+    [Header("General Configs")]
     [SerializeField] public int currentDifficulty;
 
     public List<DifficultyConfigInfo> difficultyConfigInfos;
