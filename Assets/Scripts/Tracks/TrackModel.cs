@@ -97,19 +97,37 @@ public class TrackModel : ITrackModel
     private List<int> GenerateTrackRewardSegment(List<int> track, int rewardAmount, int minValue, int maxValue)
     {
         List<int> newSegmentTrack = new List<int>();
-
-        int safety = 50000;
-        while (newSegmentTrack.Count < rewardAmount && safety-- > 0)
+        List<int> candidates = getCandidates(track, minValue, maxValue);
+        
+        for (int i = 0; i < rewardAmount; i++)
         {
-            int randPosition = Random.Range(minValue, maxValue);
-            int rangeMin = randPosition - Config.minObstacleDistance;
-            int rangeMax = randPosition + Config.minObstacleDistance;
-            if (!track.Exists(block => block >= rangeMin && block <= rangeMax))
+            if (candidates.Count == 0)
             {
-                newSegmentTrack.Add(randPosition);
+                break;
             }
+            int randomIndex = Random.Range(0, candidates.Count);
+            int position = candidates[randomIndex];
+            candidates.RemoveAt(randomIndex);
+            newSegmentTrack.Add(position);
         }
 
         return newSegmentTrack;
     }
+
+    private List<int> getCandidates(List<int> track, int minValue, int maxValue)
+    {
+        List<int> candidate = new List<int>();
+        for (int i = minValue; i < maxValue; i++)
+        {
+            int rangeMin = i - Config.minObstacleDistance;
+            int rangeMax = i + Config.minObstacleDistance;
+            if (!track.Exists(block => block >= rangeMin && block <= rangeMax))
+            {
+                candidate.Add(i);
+            }
+        }
+
+        return candidate;
+    }
+
 }
