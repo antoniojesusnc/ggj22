@@ -8,6 +8,11 @@ public class AudioController : MonoBehaviorSingleton<AudioController>
     private AudioConfig _audioConfig;
 
 
+    private void Start()
+    {
+        PlaySound(AudioConfig.SoundIDs.startmusic);
+    }
+
     public void PlaySound(AudioConfig.SoundIDs soundName)
     {
         AudioSource _audioSource = CreateAudioSource();

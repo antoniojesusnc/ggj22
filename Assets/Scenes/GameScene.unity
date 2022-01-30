@@ -314,11 +314,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
---- !u!82 &1772124387 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3170433008130071745, guid: 8556c18385022b94ca825e97d223e179, type: 3}
-  m_PrefabInstance: {fileID: 3170433007220429160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &777609405056953893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,7 +393,7 @@ PrefabInstance:
     - target: {fileID: 3170433008130071746, guid: 8556c18385022b94ca825e97d223e179, type: 3}
       propertyPath: _audioSource1
       value: 
-      objectReference: {fileID: 1772124387}
+      objectReference: {fileID: 0}
     - target: {fileID: 3170433008138208706, guid: 8556c18385022b94ca825e97d223e179, type: 3}
       propertyPath: m_Name
       value: Audio
