@@ -131,7 +131,7 @@ MonoBehaviour:
     CallbackHandler:
       Value: {fileID: 0}
       HasValue: 0
-  outputType: AUTODETECT
+  outputType: 
   threadAffinities:
     Value: []
     HasValue: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131588
   HideSetupWizard: 1
-  LastEventReferenceScanVersion: 131588
+  LastEventReferenceScanVersion: 0
   Platforms:
   - {fileID: -9089651110163125769}
   - {fileID: -5027270650445445297}
@@ -518,7 +518,7 @@ MonoBehaviour:
     CallbackHandler:
       Value: {fileID: 0}
       HasValue: 0
-  outputType: AUTODETECT
+  outputType: 
   threadAffinities:
     Value: []
     HasValue: 0
