@@ -61,7 +61,6 @@ MonoBehaviour:
   - {fileID: -634488350257813411}
   StringsBanks:
   - {fileID: -6084816681564349209}
-  - {fileID: -6084816681564349209}
   cacheTime: 637790953144397308
   cacheVersion: 10
 --- !u!114 &8105491875275356467

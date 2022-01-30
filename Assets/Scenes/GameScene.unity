@@ -636,6 +636,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FMod Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 7073957269986647478, guid: b27aba104af0f1c489c17afc4c2f9fc0, type: 3}
+      propertyPath: _parameter
+      value: 
+      objectReference: {fileID: 8105491875275356467, guid: 57a4f7af189109a45b1b34fee3547267, type: 2}
     - target: {fileID: 7073957269986647479, guid: b27aba104af0f1c489c17afc4c2f9fc0, type: 3}
       propertyPath: m_RootOrder
       value: 4
