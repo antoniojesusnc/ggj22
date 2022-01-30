@@ -79,6 +79,7 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
     public void OnHitWithReward()
     {
         _currentLives += _runnerConfig.rewardHPIncrease;
+        _currentLives = Mathf.Clamp(_currentLives, 0, _runnerConfig.lives);
         OnHitReward?.Invoke();
     }
 
