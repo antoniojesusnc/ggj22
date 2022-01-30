@@ -14,6 +14,12 @@ public class GameService : MonoBehaviorSingleton<GameService>
     public GameState State { get; private set; }
 
     [SerializeField]
+    private DifficultyConfig _difficultyConfig;
+
+    public DifficultyConfig.DifficultyConfigInfo CurrentDifficulty => _difficultyConfig.CurrentDifficulty;
+    
+    
+    [SerializeField]
     private SpeedController _speedController;
     [SerializeField]
     private HandicapController _handicapController;

@@ -17,7 +17,7 @@ MonoBehaviour:
   - fromDistance: 0
     toDistance: 200
     minHandicap: 0.1
-    maxHandicap: 0.4
+    maxHandicap: 0.3
     increaseCurve:
       serializedVersion: 2
       m_Curve:
@@ -42,10 +42,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
-  - fromDistance: 100
+  - fromDistance: 200
     toDistance: 600
-    minHandicap: 0.4
-    maxHandicap: 0.8
+    minHandicap: 0.3
+    maxHandicap: 0.7
     increaseCurve:
       serializedVersion: 2
       m_Curve:
@@ -71,8 +71,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 0
   - fromDistance: 600
-    toDistance: 1000
-    minHandicap: 0.8
+    toDistance: 1200
+    minHandicap: 0.7
     maxHandicap: 1
     increaseCurve:
       serializedVersion: 2

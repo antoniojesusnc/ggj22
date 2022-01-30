@@ -7,7 +7,6 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
     [SerializeField] private Transform _tracksParent;
 
     [Header("Track Configs")]
-    [SerializeField]
     private TracksConfig _tracksConfig;
 
     private List<TrackController> _currentTracks = new List<TrackController>();
@@ -20,6 +19,8 @@ public class TrackManager : MonoBehaviorSingleton<TrackManager>
     {
         base.Awake();
 
+        _tracksConfig = GameService.Instance.CurrentDifficulty.tracksConfig;
+        
         Init();
     }
     

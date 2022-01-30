@@ -17,9 +17,6 @@ public class RunnerConfig : ScriptableObject
     public List<RunnerConfigAnimationInfo> animationsClipsBySpeed;
     public List<RunnerConfigAnimationInfo> animationsBlackClipsBySpeed;
     
-    public AnimationClip normalHit; 
-    public AnimationClip blackHit;
-    
     [System.Serializable]
     public class RunnerConfigAnimationInfo
     {

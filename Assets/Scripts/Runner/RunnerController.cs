@@ -8,7 +8,7 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
     
     [SerializeField] private float _currentLives;
 
-    [SerializeField] private RunnerConfig _runnerConfig;
+    private RunnerConfig _runnerConfig;
     public RunnerConfig RunnerConfig => _runnerConfig;
     public int CurrentTrack { get; private set; }
     public float CurrentLives => _currentLives;
@@ -27,6 +27,8 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
 
     private void Init()
     {
+        _runnerConfig = GameService.Instance.CurrentDifficulty.runnerConfig;
+
         _inputManager = new InputManager(_runnerConfig, OnInput);
         _currentLives = _runnerConfig.lives;
         
@@ -79,12 +81,13 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
     public void OnHitWithReward()
     {
         _currentLives += _runnerConfig.rewardHPIncrease;
+        _currentLives = Mathf.Clamp(_currentLives, 0, _runnerConfig.lives);
         OnHitReward?.Invoke();
     }
 
     private void CheckIfDie()
     {
-        if (_currentLives < 1)
+        if (_currentLives <= 0)
         {
             OnDie?.Invoke();
         }
