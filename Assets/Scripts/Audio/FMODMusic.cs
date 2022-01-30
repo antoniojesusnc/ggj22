@@ -10,9 +10,7 @@ public class FMODMusic : MonoBehaviour
     [SerializeField]
     private FMODUnity.EventReference fmodEvent;
     private SpeedConfig _speedConfig;
-    [SerializeField]
-    private FMODUnity.EditorParamRef _parameter;
-
+    
     private int _velocity;
     private int _mod;
     private float _musicTracksAmount;
@@ -30,7 +28,7 @@ public class FMODMusic : MonoBehaviour
         {
             _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
             instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-            _musicTracksAmount = _parameter.Max;
+            _musicTracksAmount = 3;
             _mod = Mathf.RoundToInt(_speedConfig.maxSpeed / _musicTracksAmount);
             ClockService.Instance.OnUpdateEvent += CustomUpdate;
 
