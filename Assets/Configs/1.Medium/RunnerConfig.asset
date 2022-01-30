@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RunnerConfig
   m_EditorClassIdentifier: 
   keyToChangeTrack: 32
-  lives: 1
-  rewardHPIncrease: 0.25
+  lives: 2
+  rewardHPIncrease: 0.5
   normalSprite: {fileID: 6619000209400667281, guid: 541b51c8b6f53654eafeb3c9d9966382, type: 3}
   blackSprite: {fileID: 6619000209400667281, guid: 179b6431ab1bc294ebda36f77cfbd360, type: 3}
   animationsClipsBySpeed:

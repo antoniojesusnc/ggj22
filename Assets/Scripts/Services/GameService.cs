@@ -42,11 +42,20 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
         _speedController.Init();
         ClockService.Instance.OnUpdateEvent += CustomUpdate;
-        
-        // for know, start After time
-        ClockService.Instance.AddTimer(_difficultyConfig.timeToStart, false, Init);
     }
 
+    void Update()
+    {
+        if (State == GameState.None)
+        {
+            if (Input.GetKeyDown(CurrentDifficulty.runnerConfig.keyToChangeTrack) ||
+                Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                Init();
+            }
+        }
+    }
+    
     private void CustomUpdate(float deltaTime)
     {
         if (Speed == 0 || State != GameState.Playing)

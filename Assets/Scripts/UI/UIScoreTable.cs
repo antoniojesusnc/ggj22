@@ -32,6 +32,7 @@ public class UIScoreTable : MonoBehaviour
                 newRecord = GetRow();
                 newRecord.NewData(rank, distance.ToString());
                 rows.Add(newRecord);
+                continue;
             }
 
             if (score == 0)
