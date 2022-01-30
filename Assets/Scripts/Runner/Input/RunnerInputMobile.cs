@@ -19,6 +19,11 @@ public class RunnerInputMobile : IRunnerInput
     
     private void CustomUpdate(float deltaTime)
     {
+        if (GameService.Instance.State != GameService.GameState.Playing)
+        {
+            return;
+        }
+        
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             OnKeyPressed?.Invoke();
