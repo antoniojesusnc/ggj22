@@ -45,7 +45,7 @@ MonoBehaviour:
   - fromDistance: 200
     toDistance: 600
     minHandicap: 0.3
-    maxHandicap: 0.7
+    maxHandicap: 0.5
     increaseCurve:
       serializedVersion: 2
       m_Curve:
@@ -73,7 +73,7 @@ MonoBehaviour:
   - fromDistance: 600
     toDistance: 1200
     minHandicap: 0.7
-    maxHandicap: 1
+    maxHandicap: 0.7
     increaseCurve:
       serializedVersion: 2
       m_Curve:
