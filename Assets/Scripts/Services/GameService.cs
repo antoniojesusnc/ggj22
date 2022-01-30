@@ -17,6 +17,7 @@ public class GameService : MonoBehaviorSingleton<GameService>
     private DifficultyConfig _difficultyConfig;
 
     public DifficultyConfig.DifficultyConfigInfo CurrentDifficulty => _difficultyConfig.CurrentDifficulty;
+    public int CurrentDifficultyNumber => _difficultyConfig.currentDifficulty;
     
     
     [SerializeField]

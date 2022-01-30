@@ -62,7 +62,32 @@ public class UIScoreTable : MonoBehaviour
                 playerName = TEMPORARY_NAME;
             }
 
+            playerName = SetLevel(playerName);
+
             LeaderboardService.Instance.AddScore(playerName, score);
         }
+    }
+
+    private string SetLevel(string str)
+    {
+        string level;
+
+        switch (GameService.Instance.CurrentDifficultyNumber)
+        {
+            case 0:
+                level = "[EASY]";
+                break;
+            case 1: 
+                level = "[MEDIUM]";
+                break;
+            case 2:
+                level = "[HARD]";
+                break;
+            default:
+                level = "[EASY]";
+                break;
+
+        }
+        return str + " " + level;
     }
 }
