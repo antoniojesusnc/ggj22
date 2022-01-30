@@ -12,6 +12,12 @@ public class MonoBehaviorSingleton<T> : MonoBehaviour where T : Object
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<T>();
+                if (_instance == null)
+                {
+                    Debug.LogWarning("Creating componoent with singleton");
+                    var gameObject = new GameObject(typeof(T).ToString());
+                    gameObject.AddComponent(typeof(T));
+                }
             }
             return _instance;
         }

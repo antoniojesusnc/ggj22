@@ -7,6 +7,8 @@ public class UIMainMenu : MonoBehaviour
     
     public void PlayInDifficulty(int difficulty)
     {
+        GeneralConfigsService.Instance.Tutorial(false);
+
         difficultyConfig.currentDifficulty = difficulty;
         SceneManager.LoadScene(SceneUtils.GameScene);
     }

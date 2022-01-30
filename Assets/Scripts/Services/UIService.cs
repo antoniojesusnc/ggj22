@@ -14,7 +14,7 @@ public class UIService : MonoBehaviorSingleton<UIService>
     
     [Header("Popups")]
     [SerializeField] public UIGameOver _gameOver;
-    
+    [SerializeField] public GameObject _tutorial;    
 
     private List<UILives> _lives = new List<UILives>();
     RunnerController _runnerController;
@@ -26,6 +26,17 @@ public class UIService : MonoBehaviorSingleton<UIService>
         SetLives();
         SetDistanceCounter();
         InitPopups();
+
+        CheckShowTutorial();
+    }
+
+    private void CheckShowTutorial()
+    {
+        if (!GeneralConfigsService.Instance.IsTutorialShown)
+        {
+            _tutorial.gameObject.SetActive(true);
+            GeneralConfigsService.Instance.Tutorial(true);
+        }
     }
 
     private void InitPopups()
@@ -62,5 +73,13 @@ public class UIService : MonoBehaviorSingleton<UIService>
         {
             _lives[i].SetFill(_runnerController.CurrentLives-i);
         }       
+    }
+
+    void Update()
+    {
+        if (_tutorial.activeSelf && GameService.Instance.State == GameService.GameState.Playing)
+        {
+            _tutorial.SetActive(false);
+        }   
     }
 }
