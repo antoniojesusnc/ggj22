@@ -72,7 +72,11 @@ public class GameService : MonoBehaviorSingleton<GameService>
     private void OnRunnerHitObstacle()
     {
         _speedController.OnHit();
-        _handicapController.OnHit();
+
+        if (!RunnerController.Instance.IsDead)
+        {
+            TrackManager.Instance.CleanAfterHit();
+        }
     }
 
     private void GameOver()

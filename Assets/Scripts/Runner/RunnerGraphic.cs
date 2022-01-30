@@ -21,8 +21,25 @@ public class RunnerGraphic : RunnerSwitcher
         SetInitAnimation();
 
         runnerController.OnHitObstacle += OnHitWithObstacle;
-        
-        ClockService.Instance.OnUpdateEvent += CustomUpdate;
+
+        GameService.Instance.OnChangeState += OnChangeState;
+    }
+
+    private void OnChangeState()
+    {
+        if (GameService.Instance.State == GameService.GameState.Playing)
+        {
+            ClockService.Instance.OnUpdateEvent += CustomUpdate;
+        }
+        else
+        {
+            ClockService.Instance.OnUpdateEvent -= CustomUpdate;
+        }
+
+        if (GameService.Instance.State == GameService.GameState.GameOver)
+        {
+            _animator.SetBool(AnimationUtils.RunnerAnims.GAME_OVER.ToString(), true);
+        }
     }
 
     private void SetInitAnimation()

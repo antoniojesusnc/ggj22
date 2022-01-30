@@ -45,9 +45,4 @@ public class HandicapController : MonoBehaviour
         float handicapRaw = (handicapConfigInfo.maxHandicap - handicapConfigInfo.minHandicap) * value;
         return handicapConfigInfo.minHandicap + handicapRaw;
     }
-
-    public void OnHit()
-    {
-        TrackManager.Instance.CleanAfterHit();
-    }
 }

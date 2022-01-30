@@ -13,7 +13,8 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
     public int CurrentTrack { get; private set; }
     public float CurrentLives => _currentLives;
     public int MaxLives => _runnerConfig.lives;
-    
+    public bool IsDead => _currentLives <= 0;
+
     private InputManager _inputManager;
     public event Action OnTrackChanged;
     public event Action OnHitObstacle;
@@ -87,7 +88,7 @@ public class RunnerController : MonoBehaviorSingleton<RunnerController>
 
     private void CheckIfDie()
     {
-        if (_currentLives <= 0)
+        if (IsDead)
         {
             OnDie?.Invoke();
         }
