@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class LeaderboardService : MonoBehaviorSingleton<LeaderboardService>
 {
-    public const int EntryCount = 10;
+    public const int ENTRY_COUNT = 10;
     private const string PlayerPrefsBaseKey = "leaderboard";
 
     public string debugName;
     public int debugScore;
+
+    [ContextMenu("deleteAll")]
+    public void deleteRecords()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
     [ContextMenu("addScore")]
     public void AddScoreDebug()
@@ -29,7 +35,7 @@ public class LeaderboardService : MonoBehaviorSingleton<LeaderboardService>
     public List<LeaderboardScore> GetLeaderboardScores()
     {
         List<LeaderboardScore> leaderboardScores = new List<LeaderboardScore>();
-        for (int i = 0; i < EntryCount; ++i)
+        for (int i = 0; i < ENTRY_COUNT; ++i)
         {
             leaderboardScores.Add(Entries[i]);
         }
@@ -68,7 +74,7 @@ public class LeaderboardService : MonoBehaviorSingleton<LeaderboardService>
     {
         _entries.Clear();
 
-        for (int i = 0; i < EntryCount; ++i)
+        for (int i = 0; i < ENTRY_COUNT; ++i)
         {
             LeaderboardScore entry = new LeaderboardScore();
             entry.username = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].username", "");
@@ -81,11 +87,11 @@ public class LeaderboardService : MonoBehaviorSingleton<LeaderboardService>
 
     private void SaveScores()
     {
-        for (int i = 0; i < EntryCount; ++i)
+        for (int i = 0; i < ENTRY_COUNT; ++i)
         {
             var entry = _entries[i];
             PlayerPrefs.SetString(PlayerPrefsBaseKey + "[" + i + "].username", entry.username);
-            PlayerPrefs.SetFloat(PlayerPrefsBaseKey + "[" + i + "].score", entry.score);
+            PlayerPrefs.SetInt(PlayerPrefsBaseKey + "[" + i + "].score", entry.score);
         }
     }
 }
