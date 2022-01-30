@@ -70,5 +70,5 @@ MonoBehaviour:
       Data3: 946045873
       Data4: -516876446
     Path: event:/Music/Carrera
-  _speedConfig: {fileID: 11400000, guid: fb074b1bdcde08a469bb93a73c1d42da, type: 2}
   _parameter: {fileID: 8105491875275356467, guid: c6a91a7a9c27ee64a9152c9d24541c85, type: 2}
+  gameOverMusic: 2
