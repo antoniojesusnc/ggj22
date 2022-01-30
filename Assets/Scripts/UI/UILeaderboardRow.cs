@@ -15,6 +15,16 @@ public class UILeaderboardRow : MonoBehaviour
         _rank.text = rank;
         _player.text = playerString;
         _score.text = score;
+        _player.gameObject.SetActive(true);
+        newPlayer.gameObject.SetActive(false);
+    }
+
+    public void NewData(string rank, string score)
+    {
+        _rank.text = rank;
+        _score.text = score;
+        _player.gameObject.SetActive(false);
+        newPlayer.gameObject.SetActive(true);
     }
 
 }

@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class UIGameOver : MonoBehaviour
 {
+    [SerializeField]
+    private UIScoreTable scoreTable;
+
     public void Init()
     {
         GameService.Instance.OnChangeState += OnChangeState;
@@ -19,11 +22,13 @@ public class UIGameOver : MonoBehaviour
 
     public void ClickInPlayAgain()
     {
+        scoreTable.SaveNewRecord();
         GameService.Instance.ReloadGame();
     }
     
     public void ClickInMainMenu()
     {
+        scoreTable.SaveNewRecord();
         SceneManager.LoadScene(SceneUtils.MainMenu);
     }
 
