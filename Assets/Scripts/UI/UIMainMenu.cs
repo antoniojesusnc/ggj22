@@ -5,10 +5,7 @@ public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private DifficultyConfig difficultyConfig;
 
-    private void Start()
-    {
-        AudioController.Instance.PlaySound(AudioConfig.SoundIDs.startmusic);
-    }
+
 
     public void PlayInDifficulty(int difficulty)
     {

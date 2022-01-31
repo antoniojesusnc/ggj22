@@ -69,4 +69,10 @@ public class AudioController : MonoBehaviorSingleton<AudioController>
         return _audioSource;
         //_audioSourceList.Add(_audioSource);
     }
+
+    public void LoadBanksFMOD()
+    {
+
+        GetComponent<FMODUnity.StudioBankLoader>().Load();
+    }
 }
