@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 22457402363027865}
   - component: {fileID: 22457402363027867}
   - component: {fileID: -7877673562978718589}
+  - component: {fileID: 1556686046}
+  - component: {fileID: 1556686050}
   m_Layer: 0
   m_Name: Unity Audio
   m_TagString: Untagged
@@ -57,3 +59,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5468f823dec67484fb7908d2eabe1657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1556686046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22457402363027862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b649fa56d263644b871884340199959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1556686050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22457402363027862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9468c5f457ace64f8d4df6d642b107f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadEvent: 0
+  UnloadEvent: 0
+  Banks:
+  - Master
+  - Master.strings
+  CollisionTag: 
+  PreloadSamples: 0

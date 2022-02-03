@@ -14,22 +14,31 @@ public class FMODMusic : MonoBehaviour
     private int _velocity;
     private int _mod;
     private float _musicTracksAmount;
-    
+
+
     void Start()
-    {      
+    {
+        SetParameters();
+        
         GameService.Instance.OnChangeState += OnChangedState;
+        
         OnChangedState();
    
+    }
+
+    private void SetParameters()
+    {
+        _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
+        instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+        _musicTracksAmount = 3;
+        _mod = Mathf.RoundToInt(_speedConfig.maxSpeed / _musicTracksAmount);
     }
 
     private void OnChangedState()
     {
         if (GameService.Instance.State == GameService.GameState.None)
         {
-            _speedConfig = GameService.Instance.CurrentDifficulty.speedConfig;
-            instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-            _musicTracksAmount = 3;
-            _mod = Mathf.RoundToInt(_speedConfig.maxSpeed / _musicTracksAmount);
+
             ClockService.Instance.OnUpdateEvent += CustomUpdate;
 
             StartMusic();
