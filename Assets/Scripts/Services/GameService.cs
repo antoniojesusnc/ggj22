@@ -47,16 +47,27 @@ public class GameService : MonoBehaviorSingleton<GameService>
 
     void Update()
     {
-        if (State == GameState.None)
+        if (GeneralConfigsService.Instance.IsTutorialShown)
         {
             if (Input.GetKeyDown(CurrentDifficulty.runnerConfig.keyToChangeTrack) ||
                 Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                Init();
+                if (State == GameState.None)
+                {
+                    Init();
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (State == GameState.Playing)
+            {
+                GameOver();
             }
         }
     }
-    
+
     private void CustomUpdate(float deltaTime)
     {
         if (Speed == 0 || State != GameState.Playing)

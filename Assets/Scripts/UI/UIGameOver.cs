@@ -20,6 +20,18 @@ public class UIGameOver : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(GameService.Instance.CurrentDifficulty.runnerConfig.keyToChangeTrack))
+        {
+            ClickInPlayAgain();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ClickInMainMenu();
+        }
+    }
+    
     public void ClickInPlayAgain()
     {
         scoreTable.SaveNewRecord();
