@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenu: {fileID: 4680253737063025387}
-  mainMenu: {fileID: 4680253737063025387, guid: 7a76d52adf0343a4fb474c707388ed49, type: 3}
+  mainMenu: {fileID: 0}
 --- !u!1 &4680253737455097880
 GameObject:
   m_ObjectHideFlags: 0
